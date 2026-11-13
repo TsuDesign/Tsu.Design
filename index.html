@@ -1,0 +1,454 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tsu. Design</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Raleway:wght@200;300;400;500;600;700&display=swap">
+<style>
+/* Layout concept: dark studio page that folds like paper. Angled facets (clip-path) echo the origami crane;
+   red is used only for the crane facets, the primary action and one headline word. */
+:root {
+  --ink: #030406;          /* page ground, matches the logo artwork */
+  --ink-2: #0b0c10;        /* raised band */
+  --ink-3: #14151b;        /* surface */
+  --line: #272830;
+  --paper: #f5f2f0;        /* main text */
+  --mute: #aaa7ad;         /* secondary text */
+  --red: #ee1c25;          /* crane red, accents on dark */
+  --red-btn: #d4111a;      /* action fill, white text passes contrast */
+  --red-deep: #7d0a0f;
+  --font-display: "Caprasimo", "Cooper Black", Georgia, serif;
+  --font-body: "Raleway", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 30; background: var(--ink);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.wrap {
+  width: 100%; max-width: 1160px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font-weight: 300; font-size: 0.8rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--mute);
+  margin: 0 0 1rem;
+}
+.eyebrow b { color: var(--red); font-weight: 600; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.08; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); }
+p { margin: 0; }
+
+/* header */
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.top img { height: 40px; width: auto; }
+nav { display: flex; align-items: center; gap: 28px; font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+nav a { text-decoration: none; color: var(--mute); transition: color .2s; }
+nav a:hover { color: var(--paper); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--red-btn); color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem;
+  padding: 14px 26px; border: 0; cursor: pointer; font-family: inherit;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  transition: background .2s, transform .2s;
+}
+.btn:hover { background: #ee1c25; transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1.5px var(--line); clip-path: none; }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1.5px var(--paper); background: transparent; }
+.top .btn { padding: 9px 18px; font-size: 0.85rem; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; padding-block: clamp(40px, 7vw, 96px) clamp(40px, 6vw, 80px); }
+.hero .facets { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.hero-copy { min-width: 0; }
+.hero h1 { font-size: clamp(2.5rem, 6.4vw, 5rem); }
+.hero h1 em { font-style: normal; color: var(--red); }
+.hero .lead { margin-top: 1.4rem; font-size: 1.12rem; color: var(--mute); max-width: 34em; font-weight: 400; }
+.hero .lead strong { color: var(--paper); font-weight: 600; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 2rem; }
+.hero-shot { min-width: 0; position: relative; }
+.hero-shot img {
+  display: block; margin-inline: auto; width: auto; height: auto; max-width: 100%; max-height: min(82vh, 780px);
+  clip-path: polygon(0 0, calc(100% - 56px) 0, 100% 56px, 100% 100%, 56px 100%, 0 calc(100% - 56px));
+}
+.hero-shot figcaption { text-align: center; margin-top: 12px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); font-weight: 300; }
+.hero-shot { margin: 0; }
+
+/* process strip: a real sequence */
+.process { border-block: 1px solid var(--line); background: var(--ink-2); }
+.process ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
+.process li { padding: 22px clamp(12px, 2.5vw, 32px); display: flex; gap: 16px; align-items: baseline; min-width: 0; }
+.process li + li { border-left: 1px solid var(--line); }
+.process .n { font-family: var(--font-display); color: var(--red); font-size: 1.6rem; line-height: 1; }
+.process .t { font-weight: 600; font-size: 1.05rem; }
+.process .d { color: var(--mute); font-size: 0.92rem; font-weight: 400; display: block; }
+
+/* sections */
+section.block { padding-block: clamp(56px, 8vw, 112px); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 48px; margin-bottom: clamp(28px, 4vw, 52px); }
+.sec-head p.note { color: var(--mute); max-width: 30em; }
+
+/* catalog */
+.catalog { columns: 2 340px; column-gap: clamp(28px, 5vw, 64px); }
+.cat { break-inside: avoid; margin-bottom: 44px; }
+.cat h3 { font-size: clamp(1.4rem, 2.4vw, 1.85rem); padding-bottom: 12px; border-bottom: 2px solid var(--paper); }
+.cat.feat h3 { border-bottom-color: var(--red); }
+.cat ul { list-style: none; margin: 0; padding: 0; }
+.item {
+  display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); gap: 12px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: background .2s, padding-left .2s;
+}
+.item .code { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.08em; color: var(--red); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.item .nm { font-weight: 500; font-size: 1rem; }
+.item .nm small { display: block; margin-top: 2px; font-weight: 400; font-size: 0.86rem; color: var(--mute); }
+.item:hover { padding-left: 10px; background: var(--ink-2); }
+.item:hover .nm { color: #fff; }
+.cat.feat .item { padding-block: 16px; }
+.cat.feat .nm { font-size: 1.1rem; }
+
+/* gallery */
+.gallery { background: var(--ink-2); border-block: 1px solid var(--line); }
+.masonry { columns: 3 260px; column-gap: 16px; }
+.masonry figure { margin: 0 0 16px; break-inside: avoid; position: relative; overflow: hidden; background: var(--ink-3); }
+.masonry button { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; color: inherit; font: inherit; text-align: left; }
+.masonry img { width: 100%; height: auto; transition: transform .5s; }
+.masonry button:hover img { transform: scale(1.03); }
+.masonry figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 36px 14px 12px;
+  background: linear-gradient(to top, rgba(3,4,6,.92), rgba(3,4,6,0));
+  font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; pointer-events: none;
+}
+.masonry figcaption span { color: var(--red); }
+
+/* NFC */
+.nfc { position: relative; overflow: hidden; background: var(--ink-2); border-bottom: 1px solid var(--line); }
+.nfc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.nfc-grid > * { min-width: 0; }
+.nfc h2 em { font-style: normal; color: var(--red); }
+.nfc .lead { color: var(--mute); margin-top: 1.2rem; max-width: 32em; }
+.nfc .lead strong { color: var(--paper); font-weight: 600; }
+.tick { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
+.tick li { padding-left: 22px; position: relative; font-weight: 500; font-size: 0.98rem; }
+.tick li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 10px; height: 10px; background: var(--red); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.specs-wrap { margin-top: 2.2rem; overflow-x: auto; }
+table.specs { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 460px; }
+table.specs th, table.specs td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
+table.specs th { font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.74rem; color: var(--mute); }
+table.specs td:first-child { font-weight: 600; }
+.nfc-visual { display: grid; gap: 16px; min-width: 0; }
+.nfc-visual figure { margin: 0; }
+.nfc-visual img { width: 100%; height: auto; }
+.nfc-visual figcaption { margin-top: 8px; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); font-weight: 300; }
+.nfc-visual .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.nfc-visual .pair img { aspect-ratio: 1; object-fit: cover; }
+.nfc-visual .pair figure:last-child img { object-position: 50% 52%; }
+
+/* contact */
+.contact { position: relative; overflow: hidden; background: var(--red-deep); }
+.contact .facets { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.contact .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+.contact .wrap > * { min-width: 0; }
+.contact h2 { font-size: clamp(2.2rem, 5.4vw, 4rem); }
+.contact p.lead { margin-top: 1rem; color: #f0d6d7; max-width: 30em; }
+.contact .btn { background: var(--paper); color: #1a0305; }
+.contact .btn:hover { background: #fff; }
+.contact .btn.ghost { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.45); }
+.contact .btn.ghost:hover { box-shadow: inset 0 0 0 1.5px #fff; }
+.contact dl { margin: 0; display: grid; gap: 18px; }
+.contact dt { font-weight: 300; font-size: 0.74rem; letter-spacing: 0.26em; text-transform: uppercase; color: #f0b9bc; }
+.contact dd { margin: 2px 0 0; font-weight: 600; font-size: 1.08rem; overflow-wrap: anywhere; }
+
+footer { padding-block: 28px; border-top: 1px solid var(--line); color: var(--mute); font-size: 0.85rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 24px; }
+footer img { height: 28px; width: auto; }
+
+/* lightbox */
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(3,4,6,.94); display: flex; align-items: center; justify-content: center; padding: 24px; }
+.lb[hidden] { display: none; }
+.lb img { max-height: 86vh; max-width: min(96vw, 1000px); width: auto; height: auto; object-fit: contain; }
+.lb button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); background: var(--paper); color: var(--ink); border: 0; font: 600 0.85rem var(--font-body); letter-spacing: .14em; text-transform: uppercase; padding: 10px 16px; cursor: pointer; }
+.lb .lb-nav { top: 50%; right: auto; transform: translateY(-50%); width: 48px; height: 48px; padding: 0; border-radius: 0; font: 400 2rem/1 var(--font-body); letter-spacing: 0; display: flex; align-items: center; justify-content: center; background: rgba(245,242,240,.92); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); }
+.lb .lb-nav.prev { left: max(10px, env(safe-area-inset-left, 0px)); }
+.lb .lb-nav.next { left: auto; right: max(10px, env(safe-area-inset-right, 0px)); }
+.lb .lb-nav:hover { background: var(--red-btn); color: #fff; }
+.lb .lb-nav[hidden] { display: none; }
+.lb p b { color: var(--red); font-weight: 600; margin-left: .6em; }
+.masonry .count { position: absolute; top: 10px; right: 10px; z-index: 1; background: rgba(3,4,6,.82); color: var(--paper); font-size: .72rem; font-weight: 600; letter-spacing: .12em; padding: 5px 9px 5px 10px; pointer-events: none; border-left: 3px solid var(--red); }
+.lb p { position: absolute; bottom: max(16px, env(safe-area-inset-bottom, 0px)); left: 0; right: 0; text-align: center; font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); }
+
+@media (max-width: 900px) {
+  nav a { display: none; }
+  .hero .wrap, .nfc-grid, .contact .wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .process ol { grid-template-columns: 1fr; }
+  .process li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .tick { grid-template-columns: 1fr; }
+  .masonry { columns: 2 140px; column-gap: 10px; }
+  .masonry figure { margin-bottom: 10px; }
+  .masonry figcaption { font-size: .66rem; padding: 28px 8px 8px; letter-spacing: .1em; }
+  .top img { height: 34px; }
+  .hero-shot img { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#inicio" aria-label="Tsu. Design, início"><img src="img/logo.jpg" alt="Tsu. Design" width="1260" height="460"></a>
+    <nav aria-label="Principal">
+      <a href="#nfc">Cards NFC</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#trabalhos">Trabalhos</a>
+      <a class="btn" href="#contato">Orçamento</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <svg class="facets" viewBox="0 0 1200 700" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <polygon points="1200,0 1200,360 780,0" fill="#7d0a0f" opacity=".34"/>
+      <polygon points="1200,120 1200,520 900,330" fill="#ee1c25" opacity=".13"/>
+      <polygon points="1200,700 760,700 1040,440" fill="#a10c12" opacity=".2"/>
+      <polygon points="0,700 0,520 220,700" fill="#7d0a0f" opacity=".3"/>
+    </svg>
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><b>Card &amp; Key Card NFC</b> · Goiânia e região</p>
+        <h1>Seu cliente a uma aproximação da sua <em>marca.</em></h1>
+        <p class="lead">Card NFC e Key Card NFC personalizados com a <strong>sua marca</strong>. Com um toque do celular, seu cliente abre o <strong>Instagram, o WhatsApp ou o site</strong> da sua empresa.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Quero%20um%20or%C3%A7amento%20de%20Card%20NFC." target="_blank" rel="noopener">Pedir meu Card NFC</a>
+          <a class="btn ghost" href="#catalogo">Ver catálogo completo</a>
+        </div>
+      </div>
+      <figure class="hero-shot">
+        <img src="img/hero-nfc.jpg" alt="Card NFC branco da Tsu. Design de 5 por 9 centímetros e Key Card NFC preto de 5 por 5 centímetros com chaveiro, ambos com 2 milímetros de espessura" width="941" height="1672" fetchpriority="high">
+        <figcaption>Card 5 × 9 cm · Key Card 5 × 5 cm · 2 mm</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="process">
+    <div class="wrap">
+      <ol>
+        <li><span class="n">1</span><span><span class="t">Projeto</span><span class="d">Layout e arte final da sua marca</span></span></li>
+        <li><span class="n">2</span><span><span class="t">Produção</span><span class="d">Fabricação sob medida</span></span></li>
+        <li><span class="n">3</span><span><span class="t">Instalação</span><span class="d">Entrega instalada no local</span></span></li>
+      </ol>
+    </div>
+  </div>
+
+  <section class="block nfc" id="nfc">
+    <div class="wrap">
+      <div class="nfc-grid">
+        <div>
+          <p class="eyebrow"><b>Como funciona</b> · NFC</p>
+          <h2>Aproximou, abriu: <em>sua marca</em> na tela do cliente</h2>
+          <p class="lead">O celular lê o card, sem aplicativo, e abre o link que você escolher: <strong>Instagram, WhatsApp, site ou catálogo digital</strong>. Fazemos em versão branca ou preta, com a sua marca e a arte desenhada pela Tsu.</p>
+          <ul class="tick">
+            <li>Acesso por aproximação</li>
+            <li>Personalizável com sua marca</li>
+            <li>Alta durabilidade</li>
+            <li>Compacto e leve</li>
+          </ul>
+          <div class="specs-wrap">
+            <table class="specs">
+              <thead><tr><th>Código</th><th>Modelo</th><th>Largura</th><th>Altura</th><th>Espessura</th></tr></thead>
+              <tbody>
+                <tr><td>NFC</td><td>Card NFC</td><td>5 cm</td><td>9 cm</td><td>3 mm</td></tr>
+                <tr><td>KEYNFC</td><td>Key Card NFC</td><td>5 cm</td><td>5 cm</td><td>2 mm</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="cta-row"><a class="btn" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Quero%20um%20or%C3%A7amento%20de%20Card%20NFC." target="_blank" rel="noopener">Pedir orçamento do Card NFC</a></div>
+        </div>
+        <div class="nfc-visual">
+          <figure><img src="img/proposta-crop.jpg" alt="Cards e chaveiros NFC da Tsu. Design ao lado de um celular abrindo o perfil do Instagram" width="1280" height="548" loading="lazy"><figcaption>Card e Key Card em uso</figcaption></figure>
+          <div class="pair">
+            <figure><img src="img/nfc-generico.jpg" alt="Cards NFC prontos com ícones de WhatsApp, avaliação no Google e Instagram" width="1100" height="821" loading="lazy"><figcaption>Prontos: WhatsApp, Google, Instagram</figcaption></figure>
+            <figure><img src="img/keycard.jpg" alt="Arte de divulgação do Key Card NFC nas versões branca e preta" width="900" height="1600" loading="lazy"><figcaption>Key Card · frente e verso</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="catalogo">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><b>Catálogo</b> · por código</p>
+          <h2>Escolha pelo código, a gente faz o resto</h2>
+        </div>
+        <p class="note">Toque em um item para pedir orçamento no WhatsApp já com o código preenchido. Tudo é personalizado e atendido em Goiânia e região.</p>
+      </div>
+      <div class="catalog"><div class="cat feat"><h3>Card e Key Card</h3><ul><li><a class="item" href="#contato" data-code="NFC" data-name="Card NFC"><span class="code">NFC</span><span class="nm">Card NFC<small>Cartão com tecnologia NFC personalizado</small></span></a></li><li><a class="item" href="#contato" data-code="KEYNFC" data-name="Key Card NFC"><span class="code">KEYNFC</span><span class="nm">Key Card NFC<small>Chaveiro com tecnologia NFC personalizado</small></span></a></li></ul></div><div class="cat"><h3>Neon LED</h3><ul><li><a class="item" href="#contato" data-code="NEL-01" data-name="Neon LED"><span class="code">NEL-01</span><span class="nm">Neon LED</span></a></li><li><a class="item" href="#contato" data-code="NEL-02" data-name="Neon LED Acrílico"><span class="code">NEL-02</span><span class="nm">Neon LED Acrílico</span></a></li><li><a class="item" href="#contato" data-code="NEL-03" data-name="Neon LED Acrílico Espelhado"><span class="code">NEL-03</span><span class="nm">Neon LED Acrílico Espelhado</span></a></li><li><a class="item" href="#contato" data-code="NEL-04" data-name="Neon LED Recorte Especial"><span class="code">NEL-04</span><span class="nm">Neon LED Recorte Especial</span></a></li></ul></div><div class="cat"><h3>Acrílico</h3><ul><li><a class="item" href="#contato" data-code="ACR-01" data-name="Acrílico Logo"><span class="code">ACR-01</span><span class="nm">Acrílico Logo</span></a></li><li><a class="item" href="#contato" data-code="ACR-02" data-name="Acrílico Letreiro"><span class="code">ACR-02</span><span class="nm">Acrílico Letreiro</span></a></li><li><a class="item" href="#contato" data-code="ACR-03" data-name="Acrílico Logo + Letreiro"><span class="code">ACR-03</span><span class="nm">Acrílico Logo + Letreiro</span></a></li><li><a class="item" href="#contato" data-code="ACR-04" data-name="Acrílico Espelhado"><span class="code">ACR-04</span><span class="nm">Acrílico Espelhado</span></a></li><li><a class="item" href="#contato" data-code="ACR-05" data-name="Acrílico com Relevo"><span class="code">ACR-05</span><span class="nm">Acrílico com Relevo</span></a></li><li><a class="item" href="#contato" data-code="ACR-06" data-name="Placa de Acrílico"><span class="code">ACR-06</span><span class="nm">Placa de Acrílico</span></a></li><li><a class="item" href="#contato" data-code="ACR-07" data-name="Acrílico com Espaçador"><span class="code">ACR-07</span><span class="nm">Acrílico com Espaçador</span></a></li></ul></div><div class="cat"><h3>Fachadas</h3><ul><li><a class="item" href="#contato" data-code="FAC-01" data-name="Fachada ACM"><span class="code">FAC-01</span><span class="nm">Fachada ACM</span></a></li><li><a class="item" href="#contato" data-code="FAC-02" data-name="Fachada ACM + Acrílico"><span class="code">FAC-02</span><span class="nm">Fachada ACM + Acrílico</span></a></li><li><a class="item" href="#contato" data-code="FAC-03" data-name="Fachada ACM + Letreiro Retro Iluminado"><span class="code">FAC-03</span><span class="nm">Fachada ACM + Letreiro Retro Iluminado</span></a></li><li><a class="item" href="#contato" data-code="FAC-04" data-name="Fachada PVC Expandido"><span class="code">FAC-04</span><span class="nm">Fachada PVC Expandido</span></a></li><li><a class="item" href="#contato" data-code="FAC-05" data-name="Fachada PVC Expandido com Retro Iluminação"><span class="code">FAC-05</span><span class="nm">Fachada PVC Expandido com Retro Iluminação</span></a></li><li><a class="item" href="#contato" data-code="FAC-06" data-name="Reforma/Revitalização"><span class="code">FAC-06</span><span class="nm">Reforma/Revitalização</span></a></li><li><a class="item" href="#contato" data-code="FAC-07" data-name="Fachada Lona"><span class="code">FAC-07</span><span class="nm">Fachada Lona</span></a></li><li><a class="item" href="#contato" data-code="FAC-08" data-name="Fachada Lona + Ilhós"><span class="code">FAC-08</span><span class="nm">Fachada Lona + Ilhós</span></a></li></ul></div><div class="cat"><h3>Impressos</h3><ul><li><a class="item" href="#contato" data-code="PAS-01" data-name="Pasta 300g Fosca"><span class="code">PAS-01</span><span class="nm">Pasta 300g Fosca</span></a></li><li><a class="item" href="#contato" data-code="PAS-02" data-name="Pasta 300g Brilho"><span class="code">PAS-02</span><span class="nm">Pasta 300g Brilho</span></a></li><li><a class="item" href="#contato" data-code="PAS-03" data-name="Pasta BOPP + Verniz"><span class="code">PAS-03</span><span class="nm">Pasta BOPP + Verniz</span></a></li><li><a class="item" href="#contato" data-code="ENV-01" data-name="Envelope Comercial"><span class="code">ENV-01</span><span class="nm">Envelope Comercial</span></a></li><li><a class="item" href="#contato" data-code="PAN-01" data-name="Panfleto 4x0"><span class="code">PAN-01</span><span class="nm">Panfleto 4x0</span></a></li><li><a class="item" href="#contato" data-code="PAN-02" data-name="Panfleto 4x1"><span class="code">PAN-02</span><span class="nm">Panfleto 4x1</span></a></li><li><a class="item" href="#contato" data-code="PAN-03" data-name="Panfleto 4x4"><span class="code">PAN-03</span><span class="nm">Panfleto 4x4</span></a></li><li><a class="item" href="#contato" data-code="CAR-01" data-name="Cartão 4x1 + Verniz 30%"><span class="code">CAR-01</span><span class="nm">Cartão 4x1 + Verniz 30%</span></a></li><li><a class="item" href="#contato" data-code="CAR-02" data-name="Cartão 4x4 + Verniz 30%"><span class="code">CAR-02</span><span class="nm">Cartão 4x4 + Verniz 30%</span></a></li><li><a class="item" href="#contato" data-code="CAR-03" data-name="Cartão BOPP + Verniz 30%"><span class="code">CAR-03</span><span class="nm">Cartão BOPP + Verniz 30%</span></a></li><li><a class="item" href="#contato" data-code="PPL-01" data-name="Papel Timbrado"><span class="code">PPL-01</span><span class="nm">Papel Timbrado</span></a></li><li><a class="item" href="#contato" data-code="IMP-01" data-name="Impressão Couchê 300g Personalizada"><span class="code">IMP-01</span><span class="nm">Impressão Couchê 300g Personalizada</span></a></li><li><a class="item" href="#contato" data-code="BAG-01" data-name="Sacolas ECOBAG"><span class="code">BAG-01</span><span class="nm">Sacolas ECOBAG</span></a></li><li><a class="item" href="#contato" data-code="BAG-02" data-name="Sacolas Plástico - Silk"><span class="code">BAG-02</span><span class="nm">Sacolas Plástico - Silk</span></a></li></ul></div><div class="cat"><h3>Adesivos</h3><ul><li><a class="item" href="#contato" data-code="ADS-01" data-name="Adesivo Recorte"><span class="code">ADS-01</span><span class="nm">Adesivo Recorte</span></a></li><li><a class="item" href="#contato" data-code="ADS-02" data-name="Adesivo Impressão"><span class="code">ADS-02</span><span class="nm">Adesivo Impressão</span></a></li><li><a class="item" href="#contato" data-code="ADS-03" data-name="Adesivo Transparente"><span class="code">ADS-03</span><span class="nm">Adesivo Transparente</span></a></li><li><a class="item" href="#contato" data-code="ADS-04" data-name="Adesivo de Vitrine"><span class="code">ADS-04</span><span class="nm">Adesivo de Vitrine</span></a></li><li><a class="item" href="#contato" data-code="ADS-05" data-name="Adesivo Perfurado"><span class="code">ADS-05</span><span class="nm">Adesivo Perfurado</span></a></li><li><a class="item" href="#contato" data-code="ADS-06" data-name="Adesivo de Parede"><span class="code">ADS-06</span><span class="nm">Adesivo de Parede</span></a></li></ul></div><div class="cat"><h3>Banners e sinalização</h3><ul><li><a class="item" href="#contato" data-code="BAN-01" data-name="Banner"><span class="code">BAN-01</span><span class="nm">Banner</span></a></li><li><a class="item" href="#contato" data-code="BAN-02" data-name="Wind Banner"><span class="code">BAN-02</span><span class="nm">Wind Banner</span></a></li><li><a class="item" href="#contato" data-code="BAN-03" data-name="Faixa"><span class="code">BAN-03</span><span class="nm">Faixa</span></a></li><li><a class="item" href="#contato" data-code="SIN-01" data-name="Sinalização Interna"><span class="code">SIN-01</span><span class="nm">Sinalização Interna</span></a></li><li><a class="item" href="#contato" data-code="SIN-02" data-name="Sinalização Externa"><span class="code">SIN-02</span><span class="nm">Sinalização Externa</span></a></li><li><a class="item" href="#contato" data-code="SIN-03" data-name="Placa de Sinalização"><span class="code">SIN-03</span><span class="nm">Placa de Sinalização</span></a></li></ul></div><div class="cat"><h3>Digital</h3><ul><li><a class="item" href="#contato" data-code="DIG-01" data-name="Cartão Virtual"><span class="code">DIG-01</span><span class="nm">Cartão Virtual</span></a></li><li><a class="item" href="#contato" data-code="DIG-02" data-name="Cartão Virtual com Links"><span class="code">DIG-02</span><span class="nm">Cartão Virtual com Links</span></a></li><li><a class="item" href="#contato" data-code="DIG-03" data-name="PDF Interativo"><span class="code">DIG-03</span><span class="nm">PDF Interativo</span></a></li><li><a class="item" href="#contato" data-code="DIG-04" data-name="Catálogo Digital"><span class="code">DIG-04</span><span class="nm">Catálogo Digital</span></a></li><li><a class="item" href="#contato" data-code="DIG-05" data-name="Arte para Apresentação"><span class="code">DIG-05</span><span class="nm">Arte para Apresentação</span></a></li><li><a class="item" href="#contato" data-code="DIG-06" data-name="Arte para Corte"><span class="code">DIG-06</span><span class="nm">Arte para Corte</span></a></li><li><a class="item" href="#contato" data-code="DIG-07" data-name="Arte"><span class="code">DIG-07</span><span class="nm">Arte</span></a></li></ul></div><div class="cat"><h3>Luminosos</h3><ul><li><a class="item" href="#contato" data-code="LUM-01" data-name="Luminoso Circular de Parede"><span class="code">LUM-01</span><span class="nm">Luminoso Circular de Parede</span></a></li><li><a class="item" href="#contato" data-code="LUM-02" data-name="Luminoso Circular de Parede + Adesivo"><span class="code">LUM-02</span><span class="nm">Luminoso Circular de Parede + Adesivo</span></a></li><li><a class="item" href="#contato" data-code="LUM-03" data-name="Luminoso Circular de Parede + Acrílico"><span class="code">LUM-03</span><span class="nm">Luminoso Circular de Parede + Acrílico</span></a></li><li><a class="item" href="#contato" data-code="LUM-04" data-name="Luminoso Circular de Parede + Adesivo + Iluminação"><span class="code">LUM-04</span><span class="nm">Luminoso Circular de Parede + Adesivo + Iluminação</span></a></li><li><a class="item" href="#contato" data-code="LUM-05" data-name="Luminoso Circular de Parede + Acrílico + Iluminação"><span class="code">LUM-05</span><span class="nm">Luminoso Circular de Parede + Acrílico + Iluminação</span></a></li></ul></div></div>
+    </div>
+  </section>
+
+  <section class="block gallery" id="trabalhos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><b>Trabalhos</b> · feitos e instalados</p>
+          <h2>Marcas que já saíram do papel</h2>
+        </div>
+        <p class="note">Toque em uma foto para ver todos os trabalhos daquele segmento.</p>
+      </div>
+      <div class="masonry" id="masonry">
+        <figure><button type="button" data-cap="Neon LED" data-set="neon"><img src="img/neon.jpg" alt="Letreiro em neon LED nas cores verde-água, vermelho e branco quente" width="1000" height="1333" loading="lazy"><figcaption><span>●</span> Neon LED</figcaption></button></figure>
+        <figure><button type="button" data-cap="Logo em acrílico" data-set="acrilico"><img src="img/acrilico-rb.jpg" alt="Logo de escritório de advocacia em acrílico branco e dourado espelhado sobre parede de cimento queimado" width="900" height="1682" loading="lazy"><figcaption><span>●</span> Logo em acrílico</figcaption></button></figure>
+        <figure><button type="button" data-cap="Painel iluminado" data-set="painel"><img src="img/ponte.jpg" alt="Painel de recepção com letras iluminadas em LED azul" width="900" height="1600" loading="lazy"><figcaption><span>●</span> Painel iluminado</figcaption></button></figure>
+        <figure><button type="button" data-cap="Windbanner"><img src="img/windbanner.jpg" alt="Windbanner azul escuro com a palavra Aberto em letras brancas, em frente a uma cafeteria" width="900" height="1553" loading="lazy"><figcaption><span>●</span> Windbanner</figcaption></button></figure>
+        <figure><button type="button" data-cap="Cartões de visita" data-set="cartoes"><img src="img/cartoes.jpg" alt="Cartões de visita da Tsu. Design em preto e laranja com QR code do Instagram" width="899" height="1599" loading="lazy"><figcaption><span>●</span> Cartões de visita</figcaption></button></figure>
+        <figure><button type="button" data-cap="Panfletos e adesivos"><img src="img/panfletos.jpg" alt="Panfletos impressos colados em embalagens de papel kraft" width="1000" height="1333" loading="lazy"><figcaption><span>●</span> Panfletos</figcaption></button></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contato">
+    <svg class="facets" viewBox="0 0 1200 500" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <polygon points="1200,0 1200,500 640,500" fill="#ee1c25" opacity=".16"/>
+      <polygon points="1200,0 1200,300 900,0" fill="#030406" opacity=".25"/>
+      <polygon points="0,500 0,300 260,500" fill="#030406" opacity=".22"/>
+    </svg>
+    <div class="wrap" style="padding-block: clamp(56px, 8vw, 104px)">
+      <div>
+        <p class="eyebrow" style="color:#f0b9bc"><b style="color:#fff">Contato</b> · orçamento sem compromisso</p>
+        <h2>Vamos desenhar a próxima marca da sua rua?</h2>
+        <p class="lead">Conte o que você precisa e o espaço onde vai ficar. A Tsu. Design cuida do projeto, da produção e da instalação.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Vim%20pelo%20site%20da%20Tsu.%20Design%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="btn ghost" href="https://www.instagram.com/tsu.design.oficial/" target="_blank" rel="noopener">Ver o Instagram</a>
+        </div>
+      </div>
+      <dl>
+        <div><dt>Atendimento</dt><dd>Natanael Ricardo</dd></div>
+        <div><dt>WhatsApp comercial</dt><dd>(62) 99220-6897</dd></div>
+        <div><dt>Instagram</dt><dd>@tsu.design.oficial</dd></div>
+        <div><dt>Onde</dt><dd>Goiânia e região</dd></div>
+        
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo.jpg" alt="Tsu. Design" width="1260" height="460">
+    <span>Comunicação visual · Goiânia e região</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button type="button" id="lbx">Fechar</button>
+  <button type="button" class="lb-nav prev" id="lbprev" aria-label="Foto anterior">&#8249;</button>
+  <img id="lbimg" alt="">
+  <button type="button" class="lb-nav next" id="lbnext" aria-label="Próxima foto">&#8250;</button>
+  <p id="lbcap"></p>
+</div>
+
+<script>
+// Para ativar o botão de WhatsApp, coloque o número com DDI e DDD, só dígitos. Exemplo: "5562999999999"
+var WHATSAPP = "5562992206897";
+(function () {
+  document.querySelectorAll(".item").forEach(function (a) {
+    var msg = "Olá, Natanael! Quero um orçamento do item " + a.dataset.code + " (" + a.dataset.name + ").";
+    a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+    a.target = "_blank"; a.rel = "noopener";
+  });
+  // Fotos extras de cada segmento. A primeira foto de cada grupo é a que aparece na galeria.
+  var SETS = {
+    neon: [
+      ["img/neon-sax.jpg", "Neon LED colorido em formato de saxofonista sobre parede com folhagens", "Neon LED · Saxofonista"],
+      ["img/neon-phelipe.jpg", "Letreiro em neon LED branco com o nome Phelipe Chumbo", "Neon LED · Letreiro"]
+    ],
+    acrilico: [
+      ["img/acrilico-rb-2.jpg", "Logo Ribeiro Barros Advocacia em acrílico dourado espelhado e branco na parede de cimento queimado", "Logo em acrílico · Ribeiro Barros"],
+      ["img/acrilico-ponte.jpg", "Logo Ponte Capital em acrílico branco e azul aplicado na parede da sala de reunião", "Logo em acrílico · Ponte Capital"]
+    ],
+    painel: [
+      ["img/ponte-2.jpg", "Painel Ponte Capital com letras retroiluminadas em LED azul na recepção", "Painel iluminado · Ponte Capital"]
+    ],
+    cartoes: [
+      ["img/nfc-mockup.jpg", "Cards NFC da Tsu. Design de 5 x 9 cm com 2 mm de espessura, conectando a um celular", "Card NFC · Tsu. Design"]
+    ]
+  };
+  var lb = document.getElementById("lb"), img = document.getElementById("lbimg"), cap = document.getElementById("lbcap");
+  var prev = document.getElementById("lbprev"), next = document.getElementById("lbnext");
+  var list = [], idx = 0, opener = null;
+  document.querySelectorAll("#masonry button").forEach(function (b) {
+    var extra = SETS[b.getAttribute("data-set")];
+    if (extra && extra.length) {
+      var tag = document.createElement("span");
+      tag.className = "count"; tag.textContent = "+" + extra.length + (extra.length > 1 ? " fotos" : " foto");
+      b.appendChild(tag);
+      extra.forEach(function (f) { var p = new Image(); p.decoding = "async"; b.addEventListener("pointerenter", function () { p.src = f[0]; }, { once: true }); });
+    }
+  });
+  function show(i) {
+    idx = (i + list.length) % list.length;
+    var f = list[idx];
+    img.src = f[0]; img.alt = f[1];
+    cap.textContent = f[2];
+    if (list.length > 1) { var n = document.createElement("b"); n.textContent = (idx + 1) + " / " + list.length; cap.appendChild(n); }
+    prev.hidden = next.hidden = list.length < 2;
+  }
+  function close() { lb.hidden = true; img.removeAttribute("src"); if (opener) opener.focus(); }
+  document.getElementById("masonry").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    var im = b.querySelector("img"), c = b.getAttribute("data-cap") || "";
+    list = [[im.getAttribute("src"), im.alt, c]].concat(SETS[b.getAttribute("data-set")] || []);
+    opener = b; lb.hidden = false; show(0);
+    document.getElementById("lbx").focus();
+  });
+  prev.addEventListener("click", function (e) { e.stopPropagation(); show(idx - 1); });
+  next.addEventListener("click", function (e) { e.stopPropagation(); show(idx + 1); });
+  var swiped = false;
+  img.addEventListener("click", function () { if (swiped) { swiped = false; return; } if (list.length > 1) show(idx + 1); });
+  lb.addEventListener("click", function (e) { if (e.target === lb || e.target.id === "lbx" || e.target === cap) close(); });
+  document.addEventListener("keydown", function (e) {
+    if (lb.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowRight" && list.length > 1) show(idx + 1);
+    else if (e.key === "ArrowLeft" && list.length > 1) show(idx - 1);
+  });
+  var sx = null;
+  lb.addEventListener("touchstart", function (e) { swiped = false; sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", function (e) {
+    if (sx === null || list.length < 2) return;
+    var dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 40) { swiped = true; setTimeout(function () { swiped = false; }, 400); } else return;
+    show(dx < 0 ? idx + 1 : idx - 1);
+  });
+})();
+</script>
+
+</body></html>
