@@ -1,0 +1,2237 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tsu. Design</title>
+<meta name="description" content="Tsu. Design: comunicação visual em Goiânia e região. Card e Key Card NFC, neon LED, acrílico, fachadas, adesivos e impressos. Projeto, produção e instalação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Raleway:wght@200;300;400;500;600;700&display=swap">
+<link rel="icon" type="image/png" href="img/ICONTSU.png">
+<link rel="apple-touch-icon" href="img/ICONTSU.png">
+<script>document.documentElement.classList.add("js");</script>
+<style>
+/* Layout concept: dark studio page that folds like paper. Angled facets (clip-path) echo the origami crane;
+   red is used only for the crane facets, the primary action and one headline word. */
+:root {
+  --ink: #030406;          /* page ground, matches the logo artwork */
+  --ink-2: #0b0c10;        /* raised band */
+  --ink-3: #14151b;        /* surface */
+  --line: #272830;
+  --paper: #f5f2f0;        /* main text */
+  --mute: #aaa7ad;         /* secondary text */
+  --red: #ee1c25;          /* crane red, accents on dark */
+  --red-btn: #d4111a;      /* action fill, white text passes contrast */
+  --red-deep: #7d0a0f;
+  --font-display: "Caprasimo", "Cooper Black", Georgia, serif;
+  --font-body: "Raleway", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 30; background: var(--ink);
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.wrap {
+  width: 100%; max-width: 1160px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font-weight: 300; font-size: 0.8rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--mute);
+  margin: 0 0 1rem;
+}
+.eyebrow b { color: var(--red); font-weight: 600; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.08; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); }
+p { margin: 0; }
+
+/* header */
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.top img { height: 40px; width: auto; }
+nav { display: flex; align-items: center; gap: 28px; font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; }
+nav a { text-decoration: none; color: var(--mute); transition: color .2s; }
+nav a:hover { color: var(--paper); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--red-btn); color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem;
+  padding: 14px 26px; border: 0; cursor: pointer; font-family: inherit;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  transition: background .2s, transform .2s;
+}
+.btn:hover { background: #ee1c25; transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1.5px var(--line); clip-path: none; }
+.btn.ghost:hover { box-shadow: inset 0 0 0 1.5px var(--paper); background: transparent; }
+.top .btn { padding: 9px 18px; font-size: 0.85rem; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; padding-block: clamp(40px, 7vw, 96px) clamp(40px, 6vw, 80px); }
+.hero .facets { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 5vw, 72px); align-items: center; }
+.hero-copy { min-width: 0; }
+.hero h1 { font-size: clamp(2.5rem, 6.4vw, 5rem); }
+.hero h1 em { font-style: normal; color: var(--red); }
+.hero .lead { margin-top: 1.4rem; font-size: 1.12rem; color: var(--mute); max-width: 34em; font-weight: 400; }
+.hero .lead strong { color: var(--paper); font-weight: 600; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 2rem; }
+.hero-shot { min-width: 0; position: relative; }
+.hero-shot img {
+  display: block; margin-inline: auto; width: auto; height: auto; max-width: 100%; max-height: min(82vh, 780px);
+  clip-path: polygon(0 0, calc(100% - 56px) 0, 100% 56px, 100% 100%, 56px 100%, 0 calc(100% - 56px));
+}
+.hero-shot figcaption { text-align: center; margin-top: 12px; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); font-weight: 300; }
+.hero-shot { margin: 0; }
+
+/* process strip: a real sequence */
+.process { border-block: 1px solid var(--line); background: var(--ink-2); }
+.process ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
+.process li { padding: 22px clamp(12px, 2.5vw, 32px); display: flex; gap: 16px; align-items: baseline; min-width: 0; }
+.process li + li { border-left: 1px solid var(--line); }
+.process .n { font-family: var(--font-display); color: var(--red); font-size: 1.6rem; line-height: 1; }
+.process .t { font-weight: 600; font-size: 1.05rem; }
+.process .d { color: var(--mute); font-size: 0.92rem; font-weight: 400; display: block; }
+
+/* sections */
+section.block { padding-block: clamp(56px, 8vw, 112px); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 48px; margin-bottom: clamp(28px, 4vw, 52px); }
+.sec-head p.note { color: var(--mute); max-width: 30em; }
+
+/* catalog */
+.catalog { columns: 2 340px; column-gap: clamp(28px, 5vw, 64px); }
+.cat { break-inside: avoid; margin-bottom: 44px; }
+.cat h3 { font-size: clamp(1.4rem, 2.4vw, 1.85rem); padding-bottom: 12px; border-bottom: 2px solid var(--paper); }
+.cat.feat h3 { border-bottom-color: var(--red); }
+.cat ul { list-style: none; margin: 0; padding: 0; }
+.item {
+  display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); gap: 12px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: background .2s, padding-left .2s;
+}
+.item .code { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.08em; color: var(--red); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.item .nm { font-weight: 500; font-size: 1rem; }
+.item .nm small { display: block; margin-top: 2px; font-weight: 400; font-size: 0.86rem; color: var(--mute); }
+.item:hover { padding-left: 10px; background: var(--ink-2); }
+.item:hover .nm { color: #fff; }
+.cat.feat .item { padding-block: 16px; }
+.cat.feat .nm { font-size: 1.1rem; }
+
+/* gallery */
+.gallery { background: var(--ink-2); border-block: 1px solid var(--line); }
+.masonry { columns: 3 260px; column-gap: 16px; }
+.masonry figure { margin: 0 0 16px; break-inside: avoid; position: relative; overflow: hidden; background: var(--ink-3); }
+.masonry button { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; color: inherit; font: inherit; text-align: left; }
+.masonry img { width: 100%; height: auto; transition: transform .5s; }
+.masonry button:hover img { transform: scale(1.03); }
+.masonry figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 36px 14px 12px;
+  background: linear-gradient(to top, rgba(3,4,6,.92), rgba(3,4,6,0));
+  font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; pointer-events: none;
+}
+.masonry figcaption span { color: var(--red); }
+
+/* NFC */
+.nfc { position: relative; overflow: hidden; background: var(--ink-2); border-bottom: 1px solid var(--line); }
+.nfc-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.nfc-grid > * { min-width: 0; }
+.nfc h2 em { font-style: normal; color: var(--red); }
+.nfc .lead { color: var(--mute); margin-top: 1.2rem; max-width: 32em; }
+.nfc .lead strong { color: var(--paper); font-weight: 600; }
+.tick { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
+.tick li { padding-left: 22px; position: relative; font-weight: 500; font-size: 0.98rem; }
+.tick li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 10px; height: 10px; background: var(--red); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.specs-wrap { margin-top: 2.2rem; overflow-x: auto; }
+table.specs { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; min-width: 460px; }
+table.specs th, table.specs td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
+table.specs th { font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.74rem; color: var(--mute); }
+table.specs td:first-child { font-weight: 600; }
+.nfc-visual { display: grid; gap: 16px; min-width: 0; }
+.nfc-visual figure { margin: 0; }
+.nfc-visual img { width: 100%; height: auto; }
+.nfc-visual figcaption { margin-top: 8px; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); font-weight: 300; }
+.nfc-visual .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.nfc-visual .pair img { aspect-ratio: 1; object-fit: cover; }
+.nfc-visual .pair figure:last-child img { object-position: 50% 52%; }
+
+/* Tsu AI: troca de logo no Card e no Key Card NFC (roda no navegador) */
+.ai { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.ai .facets { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.ai .wrap { position: relative; z-index: 1; }
+.ai h2 em { font-style: normal; color: var(--red); }
+.ai-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(28px, 4.5vw, 60px); align-items: start; }
+.ai-side { position: sticky; top: 84px; display: grid; gap: 18px; min-width: 0; }
+.ai-side h3 { display: flex; align-items: baseline; gap: 14px; font-size: 1.3rem; }
+.ai-side h3 .n { color: var(--red); font-size: 1.6rem; line-height: 1; }
+.drop {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  min-height: 230px; padding: 20px 14px; text-align: center; cursor: pointer; overflow: hidden;
+  background: var(--ink-3); border: 1.5px dashed #3d3e49; color: var(--mute);
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+  transition: border-color .2s, background .2s;
+}
+.drop:hover, .drop:focus-within, .drop.over { border-color: var(--red); background: #191a21; }
+.drop input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.drop svg { width: 38px; height: 38px; color: var(--red); margin-bottom: 8px; }
+.drop strong { color: var(--paper); font-size: 1.05rem; font-weight: 600; }
+.drop small { font-size: 0.85rem; line-height: 1.45; max-width: 24em; }
+.drop img { display: none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 14px 14px 46px; }
+.drop .swap { display: none; position: absolute; left: 0; right: 0; bottom: 0; padding: 12px; background: rgba(3,4,6,.88); color: var(--paper); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+.drop.has-file { border-style: solid; background: repeating-conic-gradient(#2b2c35 0 25%, #3a3b46 0 50%) 0 0 / 18px 18px; }
+.drop.has-file img, .drop.has-file .swap { display: block; }
+.drop.has-file svg, .drop.has-file strong, .drop.has-file small { visibility: hidden; }
+.ai-ctl { display: none; gap: 8px; }
+.ai-ctl.on { display: grid; }
+.ai-ctl label { font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; color: var(--mute); font-weight: 600; display: flex; justify-content: space-between; }
+.ai-ctl input[type=range] { width: 100%; accent-color: var(--red); height: 28px; }
+.ai-msg { min-height: 1.4em; font-size: 0.92rem; color: var(--mute); }
+.ai-msg.err { color: #ff8a8f; }
+.ai-side .cta-row { margin-top: 0; display: none; }
+.ai-side .cta-row.on { display: flex; }
+.ai-note { color: var(--mute); font-size: 0.8rem; line-height: 1.55; }
+.ai-res { display: grid; gap: 28px; min-width: 0; }
+.ai-res figure { margin: 0; display: grid; gap: 10px; }
+.res-frame {
+  position: relative; background: var(--ink-3); border: 1px solid var(--line);
+  clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 36px, 100% 100%, 36px 100%, 0 calc(100% - 36px));
+}
+.res-frame canvas { display: block; width: 100%; height: auto; }
+.res-frame .badge { position: absolute; left: 0; top: 14px; background: rgba(3,4,6,.85); border-left: 3px solid var(--red); padding: 5px 11px; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.res-frame .badge.off { display: none; }
+.ai-res figcaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); font-weight: 300; }
+.ai-res figcaption .btn { padding: 10px 18px; font-size: .85rem; letter-spacing: .04em; text-transform: none; }
+.ai-res figcaption .btn[hidden] { display: none; }
+@media (max-width: 900px) {
+  .ai-grid { grid-template-columns: 1fr; }
+  .ai-side { position: static; }
+}
+
+/* anchors under the sticky header */
+section[id] { scroll-margin-top: 64px; }
+[hidden] { display: none !important; }
+
+/* tabs */
+.tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+.tab {
+  appearance: none; border: 0; cursor: pointer; font: 700 0.8rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--mute); background: var(--ink-3); padding: 16px 26px; min-height: 48px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: color .2s, background .2s, box-shadow .2s;
+}
+.tab:hover { color: var(--paper); background: #1f2029; }
+.tab[aria-selected="true"] { background: var(--red-btn); color: #fff; }
+.tab:focus-visible, .tab[aria-selected="true"]:focus-visible { outline: none; box-shadow: inset 0 0 0 3px var(--paper); }
+.panel-note { color: var(--mute); margin-bottom: 22px; }
+
+/* testimonial videos */
+.vhead { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 14px 32px; margin-bottom: 28px; }
+.vhead h3 { font-size: clamp(1.6rem, 3.4vw, 2.5rem); max-width: 20em; }
+.vhead .panel-note { margin: 10px 0 0; }
+.vnav-row { display: flex; gap: 10px; }
+.vnav {
+  appearance: none; border: 0; cursor: pointer; width: 48px; height: 48px; display: grid; place-items: center;
+  background: var(--paper); color: var(--ink);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: background .2s, color .2s, opacity .2s;
+}
+.vnav svg { width: 22px; height: 22px; }
+.vnav:hover:not(:disabled) { background: var(--red-btn); color: #fff; }
+.vnav:disabled { opacity: .3; cursor: default; }
+.vnav:focus-visible { outline: none; background: var(--red); color: #fff; }
+.vtrack {
+  list-style: none; margin: 0; padding: 0 0 12px; display: flex; gap: 18px; overflow-x: auto;
+  scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--line) transparent; overscroll-behavior-x: contain;
+}
+.vcard { flex: 0 0 clamp(220px, 23vw, 270px); scroll-snap-align: start; min-width: 0; }
+.vframe {
+  position: relative; aspect-ratio: 9 / 16; background: #000; overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 36px) 0, 100% 36px, 100% 100%, 36px 100%, 0 calc(100% - 36px));
+}
+.vframe video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; display: block; }
+.vframe .shade { position: absolute; inset: auto 0 0 0; height: 38%; background: linear-gradient(to top, rgba(3,4,6,.88), rgba(3,4,6,0)); pointer-events: none; }
+.vplay {
+  position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; margin: -38px 0 0 -38px; padding: 0; border: 0; cursor: pointer;
+  background: var(--red-btn); color: #fff; display: grid; place-items: center;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  transition: background .2s, transform .2s;
+}
+.vplay svg { width: 30px; height: 30px; margin-left: 4px; }
+.vplay:hover { background: var(--red); transform: scale(1.06); }
+.vplay:focus-visible { outline: none; background: var(--paper); color: var(--red-btn); }
+.vdur {
+  position: absolute; left: 14px; bottom: 14px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; font-variant-numeric: tabular-nums;
+  background: rgba(3,4,6,.82); padding: 4px 9px 4px 10px; border-left: 3px solid var(--red); pointer-events: none;
+}
+.vframe.playing .vplay, .vframe.playing .vdur, .vframe.playing .shade { display: none; }
+.vmeta { margin-top: 14px; }
+.vtag { font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; color: var(--red); font-weight: 600; }
+.vname { font-weight: 600; margin-top: 4px; line-height: 1.35; }
+
+/* floating WhatsApp */
+.wa-fab {
+  position: fixed; z-index: 40; display: flex; align-items: center; text-decoration: none; color: #fff;
+  right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,.5));
+}
+.wa-ico { position: relative; isolation: isolate; width: 62px; height: 62px; border-radius: 50%; background: #1fa855; display: grid; place-items: center; transition: background .2s, transform .2s; }
+.wa-ico::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #1fa855; z-index: -1; animation: wa-pulse 2.6s ease-out infinite; }
+.wa-ico svg { width: 34px; height: 34px; }
+.wa-label {
+  background: var(--paper); color: #0b0c10; font-weight: 700; font-size: .9rem; white-space: nowrap; overflow: hidden;
+  max-width: 0; opacity: 0; padding: 12px 0; margin-right: -22px; padding-right: 0; border-radius: 999px 0 0 999px;
+  transition: max-width .3s ease, opacity .2s, padding .3s ease;
+}
+.wa-fab:hover .wa-label, .wa-fab:focus-visible .wa-label { max-width: 220px; opacity: 1; padding-left: 20px; padding-right: 32px; }
+.wa-fab:hover .wa-ico { background: #25d366; transform: scale(1.05); }
+.wa-fab:focus-visible { outline: 3px solid var(--paper); outline-offset: 4px; border-radius: 999px; }
+@keyframes wa-pulse { 0% { transform: scale(1); opacity: .55; } 70%, 100% { transform: scale(1.6); opacity: 0; } }
+footer { padding-bottom: 100px; }
+
+@media (max-width: 700px) {
+  .vcard { flex-basis: 68vw; max-width: 300px; }
+  .vnav-row { display: none; }
+  .tab { padding-inline: 20px; flex: 1 1 0; }
+  .tabs { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .wa-ico::before { animation: none; opacity: 0; } }
+
+/* contact */
+.contact { position: relative; overflow: hidden; background: var(--red-deep); }
+.contact .facets { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.contact .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+.contact .wrap > * { min-width: 0; }
+.contact h2 { font-size: clamp(2.2rem, 5.4vw, 4rem); }
+.contact p.lead { margin-top: 1rem; color: #f0d6d7; max-width: 30em; }
+.contact .btn { background: var(--paper); color: #1a0305; }
+.contact .btn:hover { background: #fff; }
+.contact .btn.ghost { background: transparent; color: var(--paper); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.45); }
+.contact .btn.ghost:hover { box-shadow: inset 0 0 0 1.5px #fff; }
+.contact dl { margin: 0; display: grid; gap: 18px; }
+.contact dt { font-weight: 300; font-size: 0.74rem; letter-spacing: 0.26em; text-transform: uppercase; color: #f0b9bc; }
+.contact dd { margin: 2px 0 0; font-weight: 600; font-size: 1.08rem; overflow-wrap: anywhere; }
+
+footer { padding-block: 28px; border-top: 1px solid var(--line); color: var(--mute); font-size: 0.85rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 24px; }
+footer img { height: 28px; width: auto; }
+
+/* lightbox */
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(3,4,6,.94); display: flex; align-items: center; justify-content: center; padding: 24px; }
+.lb[hidden] { display: none; }
+.lb img { max-height: 86vh; max-width: min(96vw, 1000px); width: auto; height: auto; object-fit: contain; }
+.lb button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); background: var(--paper); color: var(--ink); border: 0; font: 600 0.85rem var(--font-body); letter-spacing: .14em; text-transform: uppercase; padding: 10px 16px; cursor: pointer; }
+.lb .lb-nav { top: 50%; right: auto; transform: translateY(-50%); width: 48px; height: 48px; padding: 0; border-radius: 0; font: 400 2rem/1 var(--font-body); letter-spacing: 0; display: flex; align-items: center; justify-content: center; background: rgba(245,242,240,.92); clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); }
+.lb .lb-nav.prev { left: max(10px, env(safe-area-inset-left, 0px)); }
+.lb .lb-nav.next { left: auto; right: max(10px, env(safe-area-inset-right, 0px)); }
+.lb .lb-nav:hover { background: var(--red-btn); color: #fff; }
+.lb .lb-nav[hidden] { display: none; }
+.lb p b { color: var(--red); font-weight: 600; margin-left: .6em; }
+.masonry .count, .spot .count { position: absolute; top: 10px; right: 10px; z-index: 1; background: rgba(3,4,6,.82); color: var(--paper); font-size: .72rem; font-weight: 600; letter-spacing: .12em; padding: 5px 9px 5px 10px; pointer-events: none; border-left: 3px solid var(--red); }
+.lb p { position: absolute; bottom: max(16px, env(safe-area-inset-bottom, 0px)); left: 0; right: 0; text-align: center; font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); }
+
+@media (max-width: 900px) {
+  nav a { display: none; }
+  .hero .wrap, .nfc-grid, .contact .wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .process ol { grid-template-columns: 1fr; }
+  .process li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .tick { grid-template-columns: 1fr; }
+  .masonry { columns: 2 140px; column-gap: 10px; }
+  .masonry figure { margin-bottom: 10px; }
+  .masonry figcaption { font-size: .66rem; padding: 28px 8px 8px; letter-spacing: .1em; }
+  .top img { height: 34px; }
+  .hero-shot img { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* ---- v3: nova ordem ---- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.hero-logo { background: #030405; border-bottom: 1px solid var(--line); text-align: center; padding-bottom: clamp(28px, 4vw, 48px); }
+.hero-logo img { width: 100%; max-width: 1500px; height: auto; margin-inline: auto; }
+.hero-logo .hero-tag { font-weight: 300; font-size: .8rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); }
+.hero-logo .cta-row { justify-content: center; margin-top: 1.4rem; }
+.hero h2 { font-size: clamp(2.5rem, 6.4vw, 5rem); }
+.hero h2 em { font-style: normal; color: var(--red); }
+.hero .cta-row { margin-top: 2rem; }
+.btn.big { padding: 20px 34px; font-size: 1.1rem; text-align: center; }
+
+/* trabalhos: destaques horizontais */
+.spot { margin: 0 0 clamp(16px, 2.4vw, 28px); position: relative; overflow: hidden; background: var(--ink-3); }
+.spot button { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; color: inherit; font: inherit; text-align: left; position: relative; }
+.spot img { width: 100%; height: auto; transition: transform .6s; }
+.spot button:hover img { transform: scale(1.02); }
+.spot figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 56px clamp(14px, 3vw, 32px) clamp(12px, 2vw, 24px); background: linear-gradient(to top, rgba(3,4,6,.92), rgba(3,4,6,0)); display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; pointer-events: none; }
+.spot figcaption b { font-size: .74rem; letter-spacing: .24em; text-transform: uppercase; color: #fff; background: var(--red-btn); padding: 5px 10px; }
+.spot figcaption span { font-size: clamp(.9rem, 1.8vw, 1.15rem); font-weight: 600; letter-spacing: .04em; }
+.spot:first-of-type { clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 44px 100%, 0 calc(100% - 44px)); }
+.spot-row { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(20px, 4vw, 56px); align-items: center; margin-bottom: clamp(28px, 4vw, 52px); }
+.spot-row > * { min-width: 0; }
+.spot-row .spot { margin: 0; }
+.spot-copy h3 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+.spot-copy p:not(.eyebrow) { color: var(--mute); margin-top: 1rem; }
+.more-note { margin-bottom: 18px; }
+
+/* depoimentos */
+.depo { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.depo .facets { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.depo .wrap { position: relative; z-index: 1; }
+.depo h2 em { font-style: normal; color: var(--red); }
+.vfeat { display: grid; grid-template-columns: minmax(240px, 380px) 1fr; gap: clamp(24px, 5vw, 72px); align-items: center; margin-bottom: clamp(36px, 5vw, 64px); }
+.vfeat > * { min-width: 0; }
+.vfeat .vcard { flex: none; width: 100%; }
+.vfeat-copy h3 { font-size: clamp(1.7rem, 3.6vw, 2.7rem); }
+.vfeat-copy p:not(.eyebrow) { color: var(--mute); margin-top: 1rem; max-width: 32em; }
+.vfeat-copy .panel-note { margin-bottom: 0; }
+.vhead.more { margin-bottom: 20px; }
+.vhead.more h3 { font-size: clamp(1.3rem, 2.6vw, 1.9rem); }
+
+/* video do card nfc */
+.nfc-video { background: var(--ink-2); border-bottom: 1px solid var(--line); }
+.nfcv-grid { display: grid; grid-template-columns: 1.1fr minmax(240px, 380px); gap: clamp(28px, 6vw, 80px); align-items: center; }
+.nfcv-grid > * { min-width: 0; }
+.nfc-video h2 em { font-style: normal; color: var(--red); }
+.nfc-video .lead { color: var(--mute); margin-top: 1.2rem; max-width: 30em; }
+.nfcv-video { flex: none; width: 100%; }
+
+/* como funciona + 3D */
+.nfc-head { max-width: 44em; margin-bottom: clamp(24px, 4vw, 44px); }
+.card3d-row { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.card3d-row > * { min-width: 0; }
+.card3d-info .tick { margin-top: 0; }
+.card3d-stage {
+  position: relative; overflow: hidden; min-height: 300px;
+  background: radial-gradient(ellipse 70% 62% at 50% 44%, #8a8c99 0%, #52535f 42%, #272831 78%, #17181e 100%);
+  clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px));
+}
+.card3d-host { height: clamp(360px, 52vw, 540px); touch-action: pan-y; cursor: grab; }
+.card3d-host:active { cursor: grabbing; }
+.card3d-host canvas { display: block; }
+.card3d-msg { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--paper); font-size: .95rem; pointer-events: none; }
+.card3d-msg[hidden] { display: none; }
+.card3d-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; margin-top: 14px; }
+.card3d-hint { font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: var(--mute); font-weight: 300; }
+.card3d-bar .btn { padding: 10px 20px; font-size: .9rem; }
+.nfc-visual-row { margin-top: clamp(32px, 5vw, 64px); grid-template-columns: 1.1fr 0.9fr; align-items: start; }
+
+/* pdf */
+.pdf-cta { background: var(--ink-2); border-block: 1px solid var(--line); padding-block: clamp(36px, 5vw, 60px); text-align: center; }
+.pdf-cta .eyebrow { margin-bottom: 1.2rem; }
+
+/* fab stack */
+.fabs { position: fixed; z-index: 40; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.fabs .wa-fab, .fabs .ig-fab { position: relative; right: auto; bottom: auto; }
+.ig-fab { display: flex; align-items: center; text-decoration: none; color: #fff; filter: drop-shadow(0 10px 22px rgba(0,0,0,.5)); }
+.ig-ico { width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; transition: transform .2s; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.ig-ico svg { width: 32px; height: 32px; }
+.ig-fab:hover .wa-label, .ig-fab:focus-visible .wa-label { max-width: 220px; opacity: 1; padding-left: 20px; padding-right: 32px; }
+.ig-fab:hover .ig-ico { transform: scale(1.05); }
+.ig-fab:focus-visible { outline: 3px solid var(--paper); outline-offset: 4px; border-radius: 999px; }
+footer { padding-bottom: 150px; }
+
+@media (max-width: 900px) {
+  .spot-row, .vfeat, .nfcv-grid, .card3d-row, .nfc-visual-row { grid-template-columns: 1fr; }
+  .vfeat .vcard, .nfcv-video { max-width: 340px; margin-inline: auto; }
+  .nfcv-grid .nfcv-video { order: 2; }
+}
+@media (max-width: 560px) {
+  .hero-logo .hero-tag { font-size: .68rem; letter-spacing: .16em; padding-inline: 4px; }
+  .spot:first-of-type { clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 26px 100%, 0 calc(100% - 26px)); }
+  .btn.big { padding: 18px 20px; font-size: 1rem; }
+  .ig-ico, .wa-ico { width: 56px; height: 56px; }
+}
+
+main { overflow-x: clip; }
+/* ---- v4: movimento, botões maiores, ferramenta 3D com logo ---- */
+.prog { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); height: 3px; z-index: 31; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, #7d0a0f, #ee1c25 60%, #ff6b5a); pointer-events: none; }
+header.top .wrap, .top img { transition: padding .3s, height .3s; }
+header.top.scrolled { box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+header.top.scrolled .wrap { padding-block: 5px; }
+header.top.scrolled img { height: 32px; }
+
+/* revelação ao rolar (só quando o JS ativa .motion) */
+html.motion [data-r] { opacity: 0; transition: opacity .85s cubic-bezier(.2,.7,.2,1) var(--d, 0ms), transform .85s cubic-bezier(.2,.7,.2,1) var(--d, 0ms); will-change: opacity, transform; }
+html.motion [data-r="up"] { transform: translate3d(0, 38px, 0); }
+html.motion [data-r="left"] { transform: translate3d(-54px, 0, 0); }
+html.motion [data-r="right"] { transform: translate3d(54px, 0, 0); }
+html.motion [data-r="zoom"] { transform: scale(.93); }
+html.motion [data-r].in { opacity: 1; transform: none; will-change: auto; }
+html.motion [data-r] h2 em, html.motion [data-r] h1 em {
+  background: linear-gradient(currentColor, currentColor) 0 96% / 0 .07em no-repeat; transition: background-size .9s .35s cubic-bezier(.2,.7,.2,1);
+}
+html.motion [data-r].in h2 em, html.motion [data-r].in h1 em { background-size: 100% .07em; }
+
+/* abertura */
+.hero-logo { overflow: hidden; }
+.hero-logo img { animation: heroIn 1.3s cubic-bezier(.2,.7,.2,1) backwards; will-change: transform, opacity; }
+.hero-logo .hero-tag, .hero-logo .cta-row { animation: riseIn .9s .5s cubic-bezier(.2,.7,.2,1) backwards; }
+.hero-logo .cta-row { animation-delay: .75s; }
+@keyframes heroIn { from { opacity: 0; transform: scale(.92) translateY(18px); filter: blur(8px); } }
+@keyframes riseIn { from { opacity: 0; transform: translateY(22px); } }
+.facets { top: -8% !important; height: 116% !important; will-change: transform; }
+
+/* faixa de serviços em movimento */
+.marquee { overflow: hidden; background: var(--red-btn); color: #fff; border-block: 1px solid #a10c12; }
+.mq-track { display: flex; width: max-content; animation: mq 42s linear infinite; }
+.marquee:hover .mq-track { animation-play-state: paused; }
+.mq-set { display: flex; align-items: center; gap: 28px; padding: 14px 14px 14px 0; flex: none; }
+.mq-set span { font-family: var(--font-display); font-size: clamp(1.05rem, 2.2vw, 1.5rem); white-space: nowrap; letter-spacing: .02em; }
+.mq-set i { width: 11px; height: 11px; background: #fff; opacity: .85; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); flex: none; }
+@keyframes mq { to { transform: translateX(-50%); } }
+
+/* brilho nos botões e pulso no play */
+.btn { position: relative; overflow: hidden; }
+.btn:not(.ghost)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.28) 50%, transparent 65%); transform: translateX(-120%); transition: transform .7s; pointer-events: none; }
+.btn:not(.ghost):hover::after { transform: translateX(120%); }
+.vplay::before { content: ""; position: absolute; inset: 0; background: var(--red); opacity: .5; animation: vpulse 2.2s ease-out infinite; z-index: -1; }
+.vplay { isolation: isolate; overflow: visible; }
+@keyframes vpulse { 0% { transform: scale(1); opacity: .55; } 80%, 100% { transform: scale(1.55); opacity: 0; } }
+.masonry figure, .spot { transition: transform .35s, box-shadow .35s; }
+.masonry figure:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(0,0,0,.5); }
+
+/* botões flutuantes maiores */
+.fabs { gap: 16px; animation: fabIn .9s 1.1s cubic-bezier(.2,.9,.3,1.25) backwards; }
+.wa-ico, .ig-ico { width: 88px; height: 88px; }
+.wa-ico svg { width: 52px; height: 52px; }
+.ig-ico svg { width: 50px; height: 50px; }
+.ig-ico { position: relative; isolation: isolate; }
+.ig-ico::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #d6249f; z-index: -1; animation: wa-pulse 2.6s ease-out infinite .9s; }
+.wa-label { font-size: 1.05rem; padding-block: 18px; margin-right: -44px; }
+.wa-fab:hover .wa-label, .wa-fab:focus-visible .wa-label, .ig-fab:hover .wa-label, .ig-fab:focus-visible .wa-label { max-width: 280px; padding-left: 26px; padding-right: 56px; }
+.wa-fab, .ig-fab { animation: fabWiggle 8s 5s ease-in-out infinite; }
+.ig-fab { animation-delay: 9s; }
+.wa-fab:hover, .ig-fab:hover { animation-play-state: paused; }
+@keyframes fabIn { from { opacity: 0; transform: translateX(90px); } }
+@keyframes fabWiggle { 0%, 90%, 100% { transform: none; } 92% { transform: rotate(-9deg) scale(1.06); } 94% { transform: rotate(8deg) scale(1.06); } 96% { transform: rotate(-5deg); } 98% { transform: rotate(3deg); } }
+footer { padding-bottom: 210px; }
+@media (max-width: 560px) {
+  .wa-ico, .ig-ico { width: 76px; height: 76px; }
+  .wa-ico svg { width: 44px; height: 44px; }
+  .ig-ico svg { width: 43px; height: 43px; }
+  .fabs { gap: 12px; }
+}
+
+/* ferramenta 3D: troca de logo */
+.card3d-row { align-items: start; }
+.card3d-stage.is-white { background: radial-gradient(ellipse 70% 62% at 50% 44%, #4a4c58 0%, #2a2b34 48%, #14151b 100%); }
+.card3d-badge { position: absolute; left: 0; top: 16px; background: rgba(3,4,6,.85); border-left: 3px solid var(--red); padding: 5px 11px; font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; pointer-events: none; }
+.card3d-badge.off { display: none; }
+.c3-tool { display: grid; gap: 18px; min-width: 0; }
+.c3-tool.off { opacity: .45; pointer-events: none; }
+.c3-tool h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.c3-tool .eyebrow { margin: 0; }
+.c3-step { display: grid; gap: 12px; }
+.c3-step h4 { display: flex; align-items: baseline; gap: 12px; margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; }
+.c3-step h4 .n { color: var(--red); font-size: 1.4rem; line-height: 1; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.seg button {
+  appearance: none; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+  font: 700 .85rem/1 var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--mute);
+  background: var(--ink-3); padding: 16px 12px; min-height: 52px;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: color .2s, background .2s;
+}
+.seg button:hover { color: var(--paper); background: #1f2029; }
+.seg button[aria-checked="true"] { background: var(--red-btn); color: #fff; }
+.seg button:focus-visible { outline: none; box-shadow: inset 0 0 0 3px var(--paper); }
+.seg .sw { width: 18px; height: 18px; border-radius: 50%; flex: none; }
+.seg .sw-b { background: #050506; box-shadow: 0 0 0 2px #8d8e99; }
+.seg .sw-w { background: #f2f2f4; box-shadow: 0 0 0 2px #8d8e99; }
+.c3-drop { min-height: 150px; }
+.c3-tool .cta-row { margin-top: 0; display: none; }
+.c3-tool .cta-row.on { display: flex; }
+.card3d-info { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(24px, 5vw, 64px); align-items: start; margin-top: clamp(32px, 5vw, 56px); }
+.card3d-info > * { min-width: 0; }
+.card3d-info .specs-wrap { margin-top: 0; }
+@media (max-width: 900px) { .card3d-info { grid-template-columns: 1fr; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mq-track, .hero-logo img, .hero-logo .hero-tag, .hero-logo .cta-row, .fabs, .wa-fab, .ig-fab, .vplay::before, .ig-ico::before { animation: none !important; }
+  html.motion [data-r] { opacity: 1; transform: none; }
+}
+
+/* ---- v5: Tsu AI com 3D + mais movimento ---- */
+.ai-3d { margin-top: clamp(56px, 8vw, 104px); padding-top: clamp(40px, 6vw, 72px); border-top: 1px solid var(--line); }
+.ai-3d .sec-head h3 { font-size: clamp(1.8rem, 4vw, 2.9rem); }
+.ai-3d .sec-head h3 em { font-style: normal; color: var(--red); }
+.card3d-info { margin-top: 0; }
+
+/* títulos entram palavra por palavra */
+html.motion .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+html.motion .w > span { display: inline-block; transform: translateY(115%) rotate(5deg); transform-origin: 0 100%; transition: transform .85s cubic-bezier(.2,.8,.2,1) calc(var(--i, 0) * 70ms + 120ms); }
+html.motion [data-r].in .w > span { transform: none; }
+
+/* ícones e botões com vida */
+@keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+@keyframes nudge { 0%, 100% { translate: 0 0; } 50% { translate: 5px 0; } }
+@keyframes drift { from { translate: -14px 10px; } to { translate: 16px -12px; } }
+@keyframes heroFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+.hero-logo img { animation: heroIn 1.3s cubic-bezier(.2,.7,.2,1) backwards, heroFloat 7s 1.4s ease-in-out infinite; }
+.wa-ico, .ig-ico { animation: bob 3.4s ease-in-out infinite; }
+.ig-ico { animation-delay: -1.6s; }
+.wa-fab:hover .wa-ico, .ig-fab:hover .ig-ico { animation-play-state: paused; }
+.wa-ico svg, .ig-ico svg { transition: transform .35s cubic-bezier(.3,1.6,.4,1); }
+.wa-fab:hover .wa-ico svg { transform: rotate(-14deg) scale(1.12); }
+.ig-fab:hover .ig-ico svg { transform: rotate(12deg) scale(1.12); }
+.tick li::before { animation: nudge 1.8s ease-in-out infinite; }
+.tick li:nth-child(2)::before { animation-delay: .25s; }
+.tick li:nth-child(3)::before { animation-delay: .5s; }
+.tick li:nth-child(4)::before { animation-delay: .75s; }
+.drop svg { animation: bob 2.2s ease-in-out infinite; }
+.drop.has-file svg { animation: none; }
+.facets polygon { animation: drift 11s ease-in-out infinite alternate; }
+.facets polygon:nth-child(2) { animation-duration: 14s; animation-delay: -4s; }
+.facets polygon:nth-child(3) { animation-duration: 9s; animation-delay: -2s; }
+.facets polygon:nth-child(4) { animation-duration: 16s; animation-delay: -7s; }
+html.motion .process .n { display: inline-block; transform: scale(.2) rotate(-60deg); transition: transform .8s cubic-bezier(.3,1.7,.4,1) .3s; }
+html.motion .process li.in .n { transform: none; }
+.process li:hover .n { animation: bob 1s ease-in-out infinite; }
+.top .logo-link img, header.top a img { transition: transform .4s cubic-bezier(.3,1.6,.4,1), height .3s; }
+header.top a:hover img { transform: rotate(-8deg) scale(1.08); }
+nav a:not(.btn) { position: relative; }
+nav a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--red); transform: scaleX(0); transform-origin: 0 50%; transition: transform .3s; }
+nav a:not(.btn):hover::after, nav a.on::after { transform: scaleX(1); }
+nav a.on { color: var(--paper); }
+.btn { transition: background .2s, transform .25s cubic-bezier(.3,1.5,.4,1), box-shadow .25s; }
+.btn:not(.ghost):hover { box-shadow: 0 12px 28px rgba(212,17,26,.45); }
+.btn:active { transform: scale(.96) !important; }
+.btn .rip { position: absolute; border-radius: 50%; background: rgba(255,255,255,.4); transform: scale(0); animation: rip .65s ease-out forwards; pointer-events: none; }
+@keyframes rip { to { transform: scale(1); opacity: 0; } }
+.vnav:hover:not(:disabled) svg { animation: nudge .7s ease-in-out infinite; }
+#vprev:hover:not(:disabled) svg { animation-direction: reverse; }
+.seg button[aria-checked="true"] .sw { animation: pop .5s cubic-bezier(.3,1.8,.4,1); }
+@keyframes pop { from { transform: scale(.3); } }
+.vplay svg { animation: nudge 1.6s ease-in-out infinite; }
+[data-tilt] { transition: transform .25s ease-out; will-change: transform; }
+.marquee.dark { background: var(--ink-2); color: var(--paper); border-color: var(--line); }
+.marquee.dark .mq-set i { background: var(--red); opacity: 1; }
+.marquee.rev .mq-track { animation-direction: reverse; animation-duration: 55s; }
+.spot img { transform: scale(1.12); transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .wa-ico, .ig-ico, .tick li::before, .drop svg, .facets polygon, .vplay svg, .hero-logo img { animation: none !important; }
+  html.motion .w, html.motion .w > span { transform: none !important; }
+  html.motion .process .n { transform: none; }
+  .spot img { transform: none; }
+}
+
+/* Cores: tudo do WhatsApp em verde; Instagram flutuante em vermelho */
+.wa-ico, .wa-ico::before { background: #1fa855; }
+.wa-fab:hover .wa-ico { background: #25d366; }
+.ig-ico, .ig-ico::before { background: #d4111a; }
+.ig-fab:hover .ig-ico { background: #ee1c25; }
+a.btn.wa, a.btn[href*="wa.me"], .contact a.btn[href*="wa.me"] { background: var(--red-btn); color: #fff; }
+a.btn.wa:hover, a.btn[href*="wa.me"]:hover, .contact a.btn[href*="wa.me"]:hover { background: #ee1c25; box-shadow: 0 12px 28px rgba(212,17,26,.45); }
+.item[href*="wa.me"]:hover { background: rgba(31,168,85,.12); }
+.item[href*="wa.me"]:hover .code { color: #25d366; }
+</style>
+</head>
+<body>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a href="#inicio" aria-label="Tsu. Design, início"><img src="img/logo.jpg" alt="Tsu. Design" width="1260" height="460"></a>
+    <nav aria-label="Principal">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#nfc">Card NFC</a>
+      <a href="#tsu-ai">Tsu AI</a>
+      <a href="#catalogo">Catálogo</a>
+      <a class="btn" href="#contato">Orçamento</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero-logo" aria-label="Tsu. Design">
+    <h1 class="sr-only">Tsu. Design: comunicação visual em Goiânia e região</h1>
+    <img src="img/tsu-design-black.jpg" alt="Tsu. Design, logo com o origami de tsuru vermelho" width="1920" height="720" fetchpriority="high">
+    <div class="wrap">
+      <p class="hero-tag">Comunicação visual · Projeto + Produção + Instalação · Goiânia e região</p>
+      <div class="cta-row">
+        <a class="btn orc" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Vim%20pelo%20site%20da%20Tsu.%20Design%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a>
+        <a class="btn ghost" href="#trabalhos">Ver trabalhos</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="mq-track"><div class="mq-set"><span>Neon LED</span><i></i><span>Logo em acrílico</span><i></i><span>Acrílico para sinalização</span><i></i><span>Adesivos e plotagem</span><i></i><span>Fachadas e banners</span><i></i><span>Windbanners</span><i></i><span>Panfletos e flyers</span><i></i><span>Cartões e materiais gráficos</span><i></i><span>Card NFC</span><i></i><span>Key Card NFC</span><i></i></div><div class="mq-set"><span>Neon LED</span><i></i><span>Logo em acrílico</span><i></i><span>Acrílico para sinalização</span><i></i><span>Adesivos e plotagem</span><i></i><span>Fachadas e banners</span><i></i><span>Windbanners</span><i></i><span>Panfletos e flyers</span><i></i><span>Cartões e materiais gráficos</span><i></i><span>Card NFC</span><i></i><span>Key Card NFC</span><i></i></div></div></div>
+
+  <div class="process">
+    <div class="wrap">
+      <ol>
+        <li><span class="n">1</span><span><span class="t">Projeto</span><span class="d">Layout e arte final da sua marca</span></span></li>
+        <li><span class="n">2</span><span><span class="t">Produção</span><span class="d">Fabricação sob medida</span></span></li>
+        <li><span class="n">3</span><span><span class="t">Instalação</span><span class="d">Entrega instalada no local</span></span></li>
+      </ol>
+    </div>
+  </div>
+
+  <section class="block gallery" id="trabalhos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><b>Trabalhos</b> · feitos e instalados</p>
+          <h2>Marcas que já saíram do papel</h2>
+        </div>
+        <p class="note">Painéis iluminados, logos em acrílico, neon e muito mais, projetados, produzidos e instalados pela Tsu. Design.</p>
+      </div>
+
+      <figure class="spot">
+        <button type="button" data-cap="Painel iluminado · Ponte Capital" data-set="painel" data-full="img/ponte-main.jpg">
+          <img src="img/ponte-main-wide.jpg" alt="Painel retroiluminado em LED azul da Ponte Capital, com Natanael apresentando o letreiro" width="900" height="510" loading="lazy">
+          <figcaption><b>Destaque</b><span>Ponte Capital · Painel retroiluminado</span></figcaption>
+        </button>
+      </figure>
+
+      <div class="spot-row">
+        <figure class="spot">
+          <button type="button" data-cap="Logo em acrílico · Ponte Capital" data-full="img/ponte-acrilico-full.jpg">
+            <img src="img/ponte-acrilico-wide.jpg" alt="Logo Ponte Capital em acrílico branco e azul sobre parede cinza" width="720" height="405" loading="lazy">
+            <figcaption><b>Acrílico</b><span>Ponte Capital · Logo em acrílico</span></figcaption>
+          </button>
+        </figure>
+        <div class="spot-copy">
+          <p class="eyebrow"><b>Mesma marca</b> · duas soluções</p>
+          <h3>Do painel que brilha ao acrílico que impõe presença</h3>
+          <p>Letreiro iluminado na recepção e logo em acrílico na sala: a identidade da Ponte Capital aplicada com acabamento limpo e instalação no local.</p>
+          <div class="cta-row"><a class="btn" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Quero%20um%20or%C3%A7amento%20de%20letreiro%20ou%20logo%20em%20acr%C3%ADlico." target="_blank" rel="noopener">Quero um assim</a></div>
+        </div>
+      </div>
+
+      <p class="panel-note more-note">Toque em uma foto para ver todos os trabalhos daquele segmento.</p>
+      <div class="masonry" id="masonry">
+        <figure><button type="button" data-cap="Neon LED" data-set="neon"><img src="img/neon.jpg" alt="Letreiro em neon LED nas cores verde-água, vermelho e branco quente" width="1000" height="1333" loading="lazy"><figcaption><span>●</span> Neon LED</figcaption></button></figure>
+        <figure><button type="button" data-cap="Logo em acrílico" data-set="acrilico"><img src="img/acrilico-rb.jpg" alt="Logo de escritório de advocacia em acrílico branco e dourado espelhado sobre parede de cimento queimado" width="900" height="1682" loading="lazy"><figcaption><span>●</span> Logo em acrílico</figcaption></button></figure>
+        <figure><button type="button" data-cap="Painel iluminado" data-set="painel"><img src="img/ponte.jpg" alt="Painel de recepção com letras iluminadas em LED azul" width="900" height="1600" loading="lazy"><figcaption><span>●</span> Painel iluminado</figcaption></button></figure>
+        <figure><button type="button" data-cap="Windbanner"><img src="img/windbanner.jpg" alt="Windbanner azul escuro com a palavra Aberto em letras brancas, em frente a uma cafeteria" width="900" height="1553" loading="lazy"><figcaption><span>●</span> Windbanner</figcaption></button></figure>
+        <figure><button type="button" data-cap="Cartões de visita" data-set="cartoes"><img src="img/cartoes.jpg" alt="Cartões de visita da Tsu. Design em preto e laranja com QR code do Instagram" width="899" height="1599" loading="lazy"><figcaption><span>●</span> Cartões de visita</figcaption></button></figure>
+        <figure><button type="button" data-cap="Panfletos e adesivos"><img src="img/panfletos.jpg" alt="Panfletos impressos colados em embalagens de papel kraft" width="1000" height="1333" loading="lazy"><figcaption><span>●</span> Panfletos</figcaption></button></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block depo" id="depoimentos" aria-labelledby="depo-title">
+    <svg class="facets" viewBox="0 0 1200 800" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <polygon points="1200,0 1200,320 880,0" fill="#7d0a0f" opacity=".3"/>
+      <polygon points="0,800 0,540 260,800" fill="#7d0a0f" opacity=".24"/>
+    </svg>
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><b>Depoimentos</b> · clientes Tsu. Design</p>
+          <h2 id="depo-title">Veja o que nossos clientes <em>estão dizendo!</em></h2>
+        </div>
+      </div>
+
+      <div class="vfeat">
+      <div class="vcard">
+            <div class="vframe">
+              <video controls playsinline preload="none" poster="video/depoimento-ponte-capital.jpg" aria-label="Depoimento de cliente da Ponte Capital"><source src="video/depoimento-ponte-capital.mp4" type="video/mp4"></video>
+              <span class="shade"></span>
+              <button type="button" class="vplay" aria-label="Assistir: Depoimento de cliente da Ponte Capital"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg></button>
+              <span class="vdur">1:14</span>
+            </div>
+            <div class="vmeta"><p class="vtag">Depoimento</p><p class="vname">Ponte Capital</p></div>
+          </div>
+        <div class="vfeat-copy">
+          <p class="eyebrow"><b>Em destaque</b> · depoimento</p>
+          <h3>Quem recebeu o projeto conta como foi</h3>
+          <p>Assista ao depoimento da Ponte Capital, cliente que recebeu da Tsu. Design o painel retroiluminado e a logo em acrílico, do projeto à instalação.</p>
+          <p class="panel-note">Toque no play para assistir, com som.</p>
+          <div class="cta-row"><a class="btn orc" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Vi%20os%20depoimentos%20no%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Quero um orçamento</a></div>
+        </div>
+      </div>
+
+      <div class="vhead more">
+        <div><h3>Mais vídeos e resultados</h3></div>
+        <div class="vnav-row">
+          <button type="button" class="vnav" id="vprev" aria-label="Vídeos anteriores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button>
+          <button type="button" class="vnav" id="vnext" aria-label="Próximos vídeos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></button>
+        </div>
+      </div>
+      <ul class="vtrack" id="vtrack" aria-label="Vídeos de clientes e resultados">
+          <li class="vcard">
+            <div class="vframe">
+              <video controls playsinline preload="none" poster="video/resultado-ponte-capital.jpg" aria-label="Letreiro iluminado da Ponte Capital instalado"><source src="video/resultado-ponte-capital.mp4" type="video/mp4"></video>
+              <span class="shade"></span>
+              <button type="button" class="vplay" aria-label="Assistir: Letreiro iluminado da Ponte Capital instalado"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg></button>
+              <span class="vdur">0:25</span>
+            </div>
+            <div class="vmeta"><p class="vtag">Resultado</p><p class="vname">Ponte Capital · Letreiro iluminado</p></div>
+          </li>
+          <li class="vcard">
+            <div class="vframe">
+              <video controls playsinline preload="none" poster="video/case-ponte-capital-letra-caixa.jpg" aria-label="Case do letreiro em letra caixa da Ponte Capital"><source src="video/case-ponte-capital-letra-caixa.mp4" type="video/mp4"></video>
+              <span class="shade"></span>
+              <button type="button" class="vplay" aria-label="Assistir: Case do letreiro em letra caixa da Ponte Capital"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg></button>
+              <span class="vdur">0:55</span>
+            </div>
+            <div class="vmeta"><p class="vtag">Case</p><p class="vname">Ponte Capital · Letra caixa em LED</p></div>
+          </li>
+          <li class="vcard">
+            <div class="vframe">
+              <video controls playsinline preload="none" poster="video/case-lavinia-paes.jpg" aria-label="Case da Lavínia Pães com lista de preços e NFC"><source src="video/case-lavinia-paes.mp4" type="video/mp4"></video>
+              <span class="shade"></span>
+              <button type="button" class="vplay" aria-label="Assistir: Case da Lavínia Pães com lista de preços e NFC"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg></button>
+              <span class="vdur">0:39</span>
+            </div>
+            <div class="vmeta"><p class="vtag">Case</p><p class="vname">Lavínia Pães · Lista de preços e NFC</p></div>
+          </li>
+          <li class="vcard">
+            <div class="vframe">
+              <video controls playsinline preload="none" poster="video/tsu-card-key-card-nfc.jpg" aria-label="Apresentação do Card e Key Card NFC da Tsu. Design"><source src="video/tsu-card-key-card-nfc.mp4" type="video/mp4"></video>
+              <span class="shade"></span>
+              <button type="button" class="vplay" aria-label="Assistir: Apresentação do Card e Key Card NFC da Tsu. Design"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg></button>
+              <span class="vdur">0:30</span>
+            </div>
+            <div class="vmeta"><p class="vtag">Tsu. Design</p><p class="vname">Card &amp; Key Card NFC</p></div>
+          </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="hero nfc-intro" id="nfc" aria-labelledby="nfc-title">
+    <svg class="facets" viewBox="0 0 1200 700" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <polygon points="1200,0 1200,360 780,0" fill="#7d0a0f" opacity=".34"/>
+      <polygon points="1200,120 1200,520 900,330" fill="#ee1c25" opacity=".13"/>
+      <polygon points="1200,700 760,700 1040,440" fill="#a10c12" opacity=".2"/>
+      <polygon points="0,700 0,520 220,700" fill="#7d0a0f" opacity=".3"/>
+    </svg>
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><b>Card &amp; Key Card NFC</b> · Goiânia e região</p>
+        <h2 id="nfc-title">Seu cliente a uma aproximação da sua <em>marca.</em></h2>
+        <p class="lead">Card NFC e Key Card NFC personalizados com a <strong>sua marca</strong>. Com um toque do celular, seu cliente abre o <strong>Instagram, o WhatsApp ou o site</strong> da sua empresa.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Quero%20um%20or%C3%A7amento%20de%20Card%20NFC." target="_blank" rel="noopener">Pedir meu Card NFC</a>
+          <a class="btn ghost" href="#catalogo">Ver catálogo completo</a>
+        </div>
+      </div>
+      <figure class="hero-shot">
+        <img src="img/hero-nfc.jpg" alt="Card NFC branco da Tsu. Design de 5 por 9 centímetros e Key Card NFC preto de 5 por 5 centímetros com chaveiro, ambos com 2 milímetros de espessura" width="941" height="1672" loading="lazy">
+        <figcaption>Card 5 × 9 cm · Key Card 5 × 5 cm · 2 mm</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block nfc-video" id="nfc-video" aria-labelledby="nfcv-title">
+    <div class="wrap">
+      <div class="nfcv-grid">
+        <div class="nfcv-copy">
+          <p class="eyebrow"><b>Na prática</b> · Card NFC</p>
+          <h2 id="nfcv-title">Veja na prática a funcionalidade do <em>Card NFC</em></h2>
+          <p class="lead">Aproximou o celular, abriu. Assista ao Card NFC da Tsu. Design funcionando de verdade, sem aplicativo e sem digitar nada.</p>
+          <div class="cta-row"><a class="btn" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Vi%20o%20v%C3%ADdeo%20do%20Card%20NFC%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir meu Card NFC</a></div>
+        </div>
+        <div class="vcard nfcv-video">
+          <div class="vframe">
+            <video controls playsinline preload="none" poster="video/apresentacao-card-nfc.jpg" aria-label="Apresentação do Card NFC da Tsu. Design"><source src="video/apresentacao-card-nfc.mp4" type="video/mp4"></video>
+            <span class="shade"></span>
+            <button type="button" class="vplay" aria-label="Assistir: Apresentação do Card NFC"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z"/></svg></button>
+            <span class="vdur">0:45</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block nfc" id="nfc-como">
+    <div class="wrap">
+      <div class="nfc-head">
+        <p class="eyebrow"><b>Como funciona</b> · NFC</p>
+        <h2>Aproximou, abriu: <em>sua marca</em> na tela do cliente</h2>
+        <p class="lead">O celular lê o card, sem aplicativo, e abre o link que você escolher: <strong>Instagram, WhatsApp, site ou catálogo digital</strong>. Fazemos em versão branca ou preta, com a sua marca e a arte desenhada pela Tsu.</p>
+      </div>
+
+      <div class="card3d-info">
+        <div>
+        <ul class="tick">
+          <li>Acesso por aproximação</li>
+          <li>Personalizável com sua marca</li>
+          <li>Alta durabilidade</li>
+          <li>Compacto e leve</li>
+        </ul>
+        <div class="cta-row"><a class="btn orc" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Quero%20um%20or%C3%A7amento%20de%20Card%20NFC." target="_blank" rel="noopener">Pedir orçamento do Card NFC</a></div>
+        </div>
+
+        </div>
+        <div>
+        <div class="specs-wrap">
+          <table class="specs">
+            <thead><tr><th>Código</th><th>Modelo</th><th>Largura</th><th>Altura</th><th>Espessura</th></tr></thead>
+            <tbody>
+              <tr><td>NFC</td><td>Card NFC</td><td>5 cm</td><td>9 cm</td><td>3 mm</td></tr>
+              <tr><td>KEYNFC</td><td>Key Card NFC</td><td>5 cm</td><td>5 cm</td><td>2 mm</td></tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+
+        <div class="nfc-visual nfc-visual-row">
+          <figure><img src="img/proposta-crop.jpg" alt="Cards e chaveiros NFC da Tsu. Design ao lado de um celular abrindo o perfil do Instagram" width="1280" height="548" loading="lazy"><figcaption>Card e Key Card em uso</figcaption></figure>
+          <div class="pair">
+            <figure><img src="img/nfc-generico.jpg" alt="Cards NFC prontos com ícones de WhatsApp, avaliação no Google e Instagram" width="1100" height="821" loading="lazy"><figcaption>Prontos: WhatsApp, Google, Instagram</figcaption></figure>
+            <figure><img src="img/keycard.png" alt="Arte de divulgação do Key Card NFC nas versões branca e preta" width="900" height="1600" loading="lazy"><figcaption>Key Card · frente e verso</figcaption></figure>
+          </div>
+        </div>
+
+    </div>
+  </section>
+
+  <section class="block ai" id="tsu-ai" aria-labelledby="ai-title">
+    <svg class="facets" viewBox="0 0 1200 800" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <polygon points="1200,0 1200,300 900,0" fill="#7d0a0f" opacity=".26"/>
+      <polygon points="0,800 0,560 240,800" fill="#7d0a0f" opacity=".26"/>
+    </svg>
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><b>Tsu AI</b> · Troca de logo</p>
+          <h2 id="ai-title">Veja <em>a sua logo</em> no Card e no Key Card</h2>
+        </div>
+        <p class="note">Envie a sua logo e a Tsu aplica a sua marca no Card NFC e no Key Card NFC, na hora, e também no cartão 3D logo abaixo. Tudo acontece no seu aparelho.</p>
+      </div>
+
+      <div class="ai-grid">
+        <div class="ai-side">
+          <h3><span class="n">1</span>Envie a sua logo</h3>
+          <label class="drop" id="aiDrop">
+            <input type="file" id="aiLogo" accept="image/png,image/jpeg,image/webp,image/svg+xml" aria-describedby="aiHint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 15v5h16v-5"/></svg>
+            <strong>Toque para escolher a logo</strong>
+            <small id="aiHint">PNG com fundo transparente fica melhor. Fundo liso (como branco) é removido automaticamente. Também aceita JPG, WEBP e SVG.</small>
+            <img alt="Prévia da sua logo">
+            <span class="swap">Trocar logo</span>
+          </label>
+          <div class="ai-ctl" id="aiCtl">
+            <label for="aiTam"><span>Tamanho da logo</span><span id="aiTamV">100%</span></label>
+            <input type="range" id="aiTam" min="60" max="120" step="5" value="100">
+          </div>
+          <p class="ai-msg" id="aiMsg" role="status" aria-live="polite"></p>
+          <div class="cta-row" id="aiCta">
+            <a class="btn wa" id="aiZap" href="#" target="_blank" rel="noopener">Pedir meu Card e Key Card</a>
+          </div>
+          <p class="ai-note">Simulação ilustrativa: a arte final, as cores e a posição da logo são ajustadas pela Tsu antes da produção. Para melhor aplicação envie sua logo com fundo transparente em png. Sua logo não é enviada para nenhum servidor, o processo roda no seu aparelho.</p>
+        </div>
+
+        <div class="ai-res" aria-label="Resultado">
+          <figure>
+            <div class="res-frame">
+              <canvas id="cvCard" width="1488" height="716" role="img" aria-label="Card NFC com a logo de exemplo da Tsu"></canvas>
+              <span class="badge" id="bgCard">Exemplo com a logo da Tsu</span>
+            </div>
+            <figcaption><span>Card NFC · 5 × 9 cm</span><a class="btn ghost" id="dlCard" href="#" download="tsu-card-nfc.png" hidden>Baixar imagem</a></figcaption>
+          </figure>
+          <figure>
+            <div class="res-frame">
+              <canvas id="cvKey" width="1254" height="1254" role="img" aria-label="Key Card NFC com a logo de exemplo da Tsu"></canvas>
+              <span class="badge" id="bgKey">Exemplo com a logo da Tsu</span>
+            </div>
+            <figcaption><span>Key Card NFC · 5 × 5 cm</span><a class="btn ghost" id="dlKey" href="#" download="tsu-key-card-nfc.png" hidden>Baixar imagem</a></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="ai-3d" id="tsu-ai-3d">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow"><b>Tsu AI</b> · Cartão 3D</p>
+            <h3>Agora em 3D: gire o cartão com a <em>sua logo</em></h3>
+          </div>
+          <p class="note">Escolha a base preta ou branca, envie a logo e veja o Card NFC em relevo, girando na tela. Tudo acontece no seu aparelho.</p>
+        </div>
+      <div class="card3d-row">
+        <div class="card3d" id="card3d">
+          <div class="card3d-stage" id="c3Stage">
+            <div class="card3d-host" id="card3dHost" role="img" aria-label="Modelo 3D do Card NFC da Tsu. Design. Arraste para girar."></div>
+            <p class="card3d-msg" id="card3dMsg">Carregando o cartão 3D…</p>
+            <span class="card3d-badge" id="c3Badge">Exemplo com a logo da Tsu</span>
+          </div>
+          <div class="card3d-bar">
+            <span class="card3d-hint">Arraste para girar o cartão</span>
+            <button type="button" class="btn ghost" id="card3dFlip">Virar cartão</button>
+          </div>
+        </div>
+
+        <div class="c3-tool" id="c3Tool">
+          <p class="eyebrow"><b>Ferramenta 3D</b> · Veja a sua logo no cartão</p>
+          <h3>Teste a sua marca no Card NFC</h3>
+          <div class="c3-step">
+            <h4><span class="n">1</span>Escolha a base</h4>
+            <div class="seg" role="radiogroup" aria-label="Cor da base do cartão">
+              <button type="button" role="radio" aria-checked="true" data-base="black"><i class="sw sw-b"></i>Base preta</button>
+              <button type="button" role="radio" aria-checked="false" data-base="white" tabindex="-1"><i class="sw sw-w"></i>Base branca</button>
+            </div>
+          </div>
+          <div class="c3-step">
+            <h4><span class="n">2</span>Envie a sua logo</h4>
+            <label class="drop c3-drop" id="c3Drop">
+              <input type="file" id="c3Logo" accept="image/png,image/jpeg,image/webp,image/svg+xml" aria-describedby="c3Hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 15v5h16v-5"/></svg>
+              <strong>Toque para escolher a logo</strong>
+              <small id="c3Hint">PNG com fundo transparente fica melhor. Fundo liso (como branco) é removido automaticamente.</small>
+              <img alt="Prévia da sua logo">
+              <span class="swap">Trocar logo</span>
+            </label>
+          </div>
+          <div class="ai-ctl" id="c3Ctl">
+            <label for="c3Tam"><span>Tamanho da logo</span><span id="c3TamV">100%</span></label>
+            <input type="range" id="c3Tam" min="60" max="120" step="5" value="100">
+          </div>
+          <p class="ai-msg" id="c3Msg" role="status" aria-live="polite"></p>
+          <div class="cta-row" id="c3Cta">
+            <a class="btn wa" id="c3Zap" href="#" target="_blank" rel="noopener">Pedir meu Card NFC com essa logo</a>
+            <button type="button" class="btn ghost" id="c3Reset">Voltar ao exemplo da Tsu</button>
+          </div>
+          <p class="ai-note">Simulação ilustrativa: a arte final, as cores e a posição da logo são ajustadas pela Tsu antes da produção. Sua logo não é enviada para nenhum servidor, o processo roda no seu aparelho.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pdf-cta" id="catalogo-pdf" aria-label="Catálogo em PDF">
+    <div class="wrap">
+      <p class="eyebrow"><b>Catálogo</b> · PDF completo</p>
+      <a class="btn big" href="https://canva.link/2onex2n63unu4k7" target="_blank" rel="noopener">Acesso ao pdf do catálogo da Tsu.Design (clique aqui)</a>
+    </div>
+  </section>
+
+  <section class="block" id="catalogo">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><b>Catálogo</b> · por código</p>
+          <h2>Escolha pelo código, a gente faz o resto</h2>
+        </div>
+        <p class="note">Toque em um item para pedir orçamento no WhatsApp já com o código preenchido. Tudo é personalizado e atendido em Goiânia e região.</p>
+      </div>
+      <div class="catalog"><div class="cat feat"><h3>Card e Key Card</h3><ul><li><a class="item" href="#contato" data-code="NFC" data-name="Card NFC"><span class="code">NFC</span><span class="nm">Card NFC<small>Cartão com tecnologia NFC personalizado</small></span></a></li><li><a class="item" href="#contato" data-code="KEYNFC" data-name="Key Card NFC"><span class="code">KEYNFC</span><span class="nm">Key Card NFC<small>Chaveiro com tecnologia NFC personalizado</small></span></a></li></ul></div><div class="cat"><h3>Neon LED</h3><ul><li><a class="item" href="#contato" data-code="NEL-01" data-name="Neon LED"><span class="code">NEL-01</span><span class="nm">Neon LED</span></a></li><li><a class="item" href="#contato" data-code="NEL-02" data-name="Neon LED Acrílico"><span class="code">NEL-02</span><span class="nm">Neon LED Acrílico</span></a></li><li><a class="item" href="#contato" data-code="NEL-03" data-name="Neon LED Acrílico Espelhado"><span class="code">NEL-03</span><span class="nm">Neon LED Acrílico Espelhado</span></a></li><li><a class="item" href="#contato" data-code="NEL-04" data-name="Neon LED Recorte Especial"><span class="code">NEL-04</span><span class="nm">Neon LED Recorte Especial</span></a></li></ul></div><div class="cat"><h3>Acrílico</h3><ul><li><a class="item" href="#contato" data-code="ACR-01" data-name="Acrílico Logo"><span class="code">ACR-01</span><span class="nm">Acrílico Logo</span></a></li><li><a class="item" href="#contato" data-code="ACR-02" data-name="Acrílico Letreiro"><span class="code">ACR-02</span><span class="nm">Acrílico Letreiro</span></a></li><li><a class="item" href="#contato" data-code="ACR-03" data-name="Acrílico Logo + Letreiro"><span class="code">ACR-03</span><span class="nm">Acrílico Logo + Letreiro</span></a></li><li><a class="item" href="#contato" data-code="ACR-04" data-name="Acrílico Espelhado"><span class="code">ACR-04</span><span class="nm">Acrílico Espelhado</span></a></li><li><a class="item" href="#contato" data-code="ACR-05" data-name="Acrílico com Relevo"><span class="code">ACR-05</span><span class="nm">Acrílico com Relevo</span></a></li><li><a class="item" href="#contato" data-code="ACR-06" data-name="Placa de Acrílico"><span class="code">ACR-06</span><span class="nm">Placa de Acrílico</span></a></li><li><a class="item" href="#contato" data-code="ACR-07" data-name="Acrílico com Espaçador"><span class="code">ACR-07</span><span class="nm">Acrílico com Espaçador</span></a></li></ul></div><div class="cat"><h3>Fachadas</h3><ul><li><a class="item" href="#contato" data-code="FAC-01" data-name="Fachada ACM"><span class="code">FAC-01</span><span class="nm">Fachada ACM</span></a></li><li><a class="item" href="#contato" data-code="FAC-02" data-name="Fachada ACM + Acrílico"><span class="code">FAC-02</span><span class="nm">Fachada ACM + Acrílico</span></a></li><li><a class="item" href="#contato" data-code="FAC-03" data-name="Fachada ACM + Letreiro Retro Iluminado"><span class="code">FAC-03</span><span class="nm">Fachada ACM + Letreiro Retro Iluminado</span></a></li><li><a class="item" href="#contato" data-code="FAC-04" data-name="Fachada PVC Expandido"><span class="code">FAC-04</span><span class="nm">Fachada PVC Expandido</span></a></li><li><a class="item" href="#contato" data-code="FAC-05" data-name="Fachada PVC Expandido com Retro Iluminação"><span class="code">FAC-05</span><span class="nm">Fachada PVC Expandido com Retro Iluminação</span></a></li><li><a class="item" href="#contato" data-code="FAC-06" data-name="Reforma/Revitalização"><span class="code">FAC-06</span><span class="nm">Reforma/Revitalização</span></a></li><li><a class="item" href="#contato" data-code="FAC-07" data-name="Fachada Lona"><span class="code">FAC-07</span><span class="nm">Fachada Lona</span></a></li><li><a class="item" href="#contato" data-code="FAC-08" data-name="Fachada Lona + Ilhós"><span class="code">FAC-08</span><span class="nm">Fachada Lona + Ilhós</span></a></li></ul></div><div class="cat"><h3>Impressos</h3><ul><li><a class="item" href="#contato" data-code="PAS-01" data-name="Pasta 300g Fosca"><span class="code">PAS-01</span><span class="nm">Pasta 300g Fosca</span></a></li><li><a class="item" href="#contato" data-code="PAS-02" data-name="Pasta 300g Brilho"><span class="code">PAS-02</span><span class="nm">Pasta 300g Brilho</span></a></li><li><a class="item" href="#contato" data-code="PAS-03" data-name="Pasta BOPP + Verniz"><span class="code">PAS-03</span><span class="nm">Pasta BOPP + Verniz</span></a></li><li><a class="item" href="#contato" data-code="ENV-01" data-name="Envelope Comercial"><span class="code">ENV-01</span><span class="nm">Envelope Comercial</span></a></li><li><a class="item" href="#contato" data-code="PAN-01" data-name="Panfleto 4x0"><span class="code">PAN-01</span><span class="nm">Panfleto 4x0</span></a></li><li><a class="item" href="#contato" data-code="PAN-02" data-name="Panfleto 4x1"><span class="code">PAN-02</span><span class="nm">Panfleto 4x1</span></a></li><li><a class="item" href="#contato" data-code="PAN-03" data-name="Panfleto 4x4"><span class="code">PAN-03</span><span class="nm">Panfleto 4x4</span></a></li><li><a class="item" href="#contato" data-code="CAR-01" data-name="Cartão 4x1 + Verniz 30%"><span class="code">CAR-01</span><span class="nm">Cartão 4x1 + Verniz 30%</span></a></li><li><a class="item" href="#contato" data-code="CAR-02" data-name="Cartão 4x4 + Verniz 30%"><span class="code">CAR-02</span><span class="nm">Cartão 4x4 + Verniz 30%</span></a></li><li><a class="item" href="#contato" data-code="CAR-03" data-name="Cartão BOPP + Verniz 30%"><span class="code">CAR-03</span><span class="nm">Cartão BOPP + Verniz 30%</span></a></li><li><a class="item" href="#contato" data-code="PPL-01" data-name="Papel Timbrado"><span class="code">PPL-01</span><span class="nm">Papel Timbrado</span></a></li><li><a class="item" href="#contato" data-code="IMP-01" data-name="Impressão Couchê 300g Personalizada"><span class="code">IMP-01</span><span class="nm">Impressão Couchê 300g Personalizada</span></a></li><li><a class="item" href="#contato" data-code="BAG-01" data-name="Sacolas ECOBAG"><span class="code">BAG-01</span><span class="nm">Sacolas ECOBAG</span></a></li><li><a class="item" href="#contato" data-code="BAG-02" data-name="Sacolas Plástico - Silk"><span class="code">BAG-02</span><span class="nm">Sacolas Plástico - Silk</span></a></li></ul></div><div class="cat"><h3>Adesivos</h3><ul><li><a class="item" href="#contato" data-code="ADS-01" data-name="Adesivo Recorte"><span class="code">ADS-01</span><span class="nm">Adesivo Recorte</span></a></li><li><a class="item" href="#contato" data-code="ADS-02" data-name="Adesivo Impressão"><span class="code">ADS-02</span><span class="nm">Adesivo Impressão</span></a></li><li><a class="item" href="#contato" data-code="ADS-03" data-name="Adesivo Transparente"><span class="code">ADS-03</span><span class="nm">Adesivo Transparente</span></a></li><li><a class="item" href="#contato" data-code="ADS-04" data-name="Adesivo de Vitrine"><span class="code">ADS-04</span><span class="nm">Adesivo de Vitrine</span></a></li><li><a class="item" href="#contato" data-code="ADS-05" data-name="Adesivo Perfurado"><span class="code">ADS-05</span><span class="nm">Adesivo Perfurado</span></a></li><li><a class="item" href="#contato" data-code="ADS-06" data-name="Adesivo de Parede"><span class="code">ADS-06</span><span class="nm">Adesivo de Parede</span></a></li></ul></div><div class="cat"><h3>Banners e sinalização</h3><ul><li><a class="item" href="#contato" data-code="BAN-01" data-name="Banner"><span class="code">BAN-01</span><span class="nm">Banner</span></a></li><li><a class="item" href="#contato" data-code="BAN-02" data-name="Wind Banner"><span class="code">BAN-02</span><span class="nm">Wind Banner</span></a></li><li><a class="item" href="#contato" data-code="BAN-03" data-name="Faixa"><span class="code">BAN-03</span><span class="nm">Faixa</span></a></li><li><a class="item" href="#contato" data-code="SIN-01" data-name="Sinalização Interna"><span class="code">SIN-01</span><span class="nm">Sinalização Interna</span></a></li><li><a class="item" href="#contato" data-code="SIN-02" data-name="Sinalização Externa"><span class="code">SIN-02</span><span class="nm">Sinalização Externa</span></a></li><li><a class="item" href="#contato" data-code="SIN-03" data-name="Placa de Sinalização"><span class="code">SIN-03</span><span class="nm">Placa de Sinalização</span></a></li></ul></div><div class="cat"><h3>Digital</h3><ul><li><a class="item" href="#contato" data-code="DIG-01" data-name="Cartão Virtual"><span class="code">DIG-01</span><span class="nm">Cartão Virtual</span></a></li><li><a class="item" href="#contato" data-code="DIG-02" data-name="Cartão Virtual com Links"><span class="code">DIG-02</span><span class="nm">Cartão Virtual com Links</span></a></li><li><a class="item" href="#contato" data-code="DIG-03" data-name="PDF Interativo"><span class="code">DIG-03</span><span class="nm">PDF Interativo</span></a></li><li><a class="item" href="#contato" data-code="DIG-04" data-name="Catálogo Digital"><span class="code">DIG-04</span><span class="nm">Catálogo Digital</span></a></li><li><a class="item" href="#contato" data-code="DIG-05" data-name="Arte para Apresentação"><span class="code">DIG-05</span><span class="nm">Arte para Apresentação</span></a></li><li><a class="item" href="#contato" data-code="DIG-06" data-name="Arte para Corte"><span class="code">DIG-06</span><span class="nm">Arte para Corte</span></a></li><li><a class="item" href="#contato" data-code="DIG-07" data-name="Arte"><span class="code">DIG-07</span><span class="nm">Arte</span></a></li></ul></div><div class="cat"><h3>Luminosos</h3><ul><li><a class="item" href="#contato" data-code="LUM-01" data-name="Luminoso Circular de Parede"><span class="code">LUM-01</span><span class="nm">Luminoso Circular de Parede</span></a></li><li><a class="item" href="#contato" data-code="LUM-02" data-name="Luminoso Circular de Parede + Adesivo"><span class="code">LUM-02</span><span class="nm">Luminoso Circular de Parede + Adesivo</span></a></li><li><a class="item" href="#contato" data-code="LUM-03" data-name="Luminoso Circular de Parede + Acrílico"><span class="code">LUM-03</span><span class="nm">Luminoso Circular de Parede + Acrílico</span></a></li><li><a class="item" href="#contato" data-code="LUM-04" data-name="Luminoso Circular de Parede + Adesivo + Iluminação"><span class="code">LUM-04</span><span class="nm">Luminoso Circular de Parede + Adesivo + Iluminação</span></a></li><li><a class="item" href="#contato" data-code="LUM-05" data-name="Luminoso Circular de Parede + Acrílico + Iluminação"><span class="code">LUM-05</span><span class="nm">Luminoso Circular de Parede + Acrílico + Iluminação</span></a></li></ul></div></div>
+    </div>
+  </section>
+
+  <div class="marquee dark rev" aria-hidden="true"><div class="mq-track"><div class="mq-set"><span>Projeto</span><i></i><span>Produção</span><i></i><span>Instalação</span><i></i><span>Goiânia e região</span><i></i><span>Orçamento sem compromisso</span><i></i><span>Projeto</span><i></i><span>Produção</span><i></i><span>Instalação</span><i></i><span>Goiânia e região</span><i></i><span>Orçamento sem compromisso</span><i></i></div><div class="mq-set"><span>Projeto</span><i></i><span>Produção</span><i></i><span>Instalação</span><i></i><span>Goiânia e região</span><i></i><span>Orçamento sem compromisso</span><i></i><span>Projeto</span><i></i><span>Produção</span><i></i><span>Instalação</span><i></i><span>Goiânia e região</span><i></i><span>Orçamento sem compromisso</span><i></i></div></div></div>
+
+  <section class="contact" id="contato">
+    <svg class="facets" viewBox="0 0 1200 500" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <polygon points="1200,0 1200,500 640,500" fill="#ee1c25" opacity=".16"/>
+      <polygon points="1200,0 1200,300 900,0" fill="#030406" opacity=".25"/>
+      <polygon points="0,500 0,300 260,500" fill="#030406" opacity=".22"/>
+    </svg>
+    <div class="wrap" style="padding-block: clamp(56px, 8vw, 104px)">
+      <div>
+        <p class="eyebrow" style="color:#f0b9bc"><b style="color:#fff">Contato</b> · orçamento sem compromisso</p>
+        <h2>Transformamos sua identidade em presença visual com excelência!</h2>
+        <p class="lead">Conte o que você precisa e o espaço onde vai ficar. A Tsu. Design cuida do projeto, da produção e da instalação.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Vim%20pelo%20site%20da%20Tsu.%20Design%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="btn ghost" href="https://www.instagram.com/tsu.design.oficial/" target="_blank" rel="noopener">Ver o Instagram</a>
+        </div>
+      </div>
+      <dl>
+        <div><dt>Atendimento</dt><dd>Natanael Ricardo</dd></div>
+        <div><dt>WhatsApp comercial</dt><dd>(62) 99220-6897</dd></div>
+        <div><dt>Instagram</dt><dd>@tsu.design.oficial</dd></div>
+        <div><dt>Onde</dt><dd>Goiânia e região</dd></div>
+        
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo.jpg" alt="Tsu. Design" width="1260" height="460">
+    <span>Comunicação visual · Goiânia e região</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button type="button" id="lbx">Fechar</button>
+  <button type="button" class="lb-nav prev" id="lbprev" aria-label="Foto anterior">&#8249;</button>
+  <img id="lbimg" alt="">
+  <button type="button" class="lb-nav next" id="lbnext" aria-label="Próxima foto">&#8250;</button>
+  <p id="lbcap"></p>
+</div>
+
+<div class="fabs">
+  <a class="ig-fab" href="https://www.instagram.com/tsu.design.oficial/" target="_blank" rel="noopener" aria-label="Abrir o Instagram da Tsu. Design">
+    <span class="wa-label">Siga no Instagram</span>
+    <span class="ig-ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#fff" stroke-width="1.9"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff" stroke="none"/></svg></span>
+  </a>
+  <a class="wa-fab" href="https://wa.me/5562992206897?text=Ol%C3%A1%2C%20Natanael!%20Vim%20pelo%20site%20da%20Tsu.%20Design%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar com a Tsu. Design no WhatsApp">
+  <span class="wa-label">Fale no WhatsApp</span>
+  <span class="wa-ico"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none"><path d="M16 3.5A12.5 12.5 0 0 0 5.2 22.3L3.5 28.5l6.4-1.7A12.5 12.5 0 1 0 16 3.5z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><g transform="translate(8.2 8.2) scale(.65)"><path fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></g></svg></span>
+</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script>
+/*!
+ * Tsu Design Card 3D
+ * Cartão NFC interativo em 3D, com a arte do cartão Tsu Design em relevo
+ * (pássaro, logotipo e símbolo de aproximação), igual na frente e no verso.
+ * Requer three.js r128 (global THREE).
+ *
+ * Uso:
+ *   TsuCard.mount(document.getElementById('cartao'), {
+ *     idle: true,          // flutua e balança sozinho
+ *     interactive: true,   // inclina com o mouse, arrasta para girar
+ *     startSide: 'front',  // 'front' | 'back'
+ *     tilt: 1,             // intensidade da inclinação (0 a 2)
+ *     shadow: false,       // sombra no chão (desligada por padrão)
+ *     artSrc: null         // PNG do layout do cartão (caminho ou data URI). Padrão: arte embutida
+ *   }).then(function (card) { card.flip(); });
+ *
+ * O elemento recebido precisa ter altura definida (ex.: height: 560px).
+ * O fundo do canvas é transparente.
+ *
+ * Formato do PNG: cartão preto sobre fundo branco ou transparente. O cartão assume a
+ * proporção do PNG. O preto vira vazio (o corpo do cartão já é preto), e o que sobra
+ * (pássaro, texto, ondas) ganha relevo.
+ */
+(function (global) {
+  'use strict';
+
+  // ---------- medidas do cartão (unidades da cena) ----------
+  var W = 2.0, D = 0.06, BEV = 0.012;
+  var R_BIG = 0.21 * W, R_SMALL = 0.03 * W;     // cantos assimétricos
+  var CW = 1024;                                // largura das texturas (a altura segue a proporção)
+  var FACE_Z = D / 2 + BEV;
+  var REST_Y = -0.38, REST_X = 0.1;             // pose de repouso
+
+  // faixas verticais da arte (fração da altura), para dar profundidades diferentes
+  var BAND_CRANE = [0, 0.415], BAND_TEXT = [0.415, 0.63], BAND_WIFI = [0.63, 1];
+
+  // Arte original do cartão (PNG) embutida
+  var ART_DATA_URI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAKfCAYAAAAYSHBsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAEzkSURBVHhe7d0JnJxVme/xp/all+o1C4ksYQmbAsKgIyqbuIxCWMdxYREX7ugoAWb0IgICKoLKpncEZVG2gDMkoPfqKAqCCh+RxcgWFgMBAiFJ711dXfs9z5u3Qqep7q7qruquqvP7+nntqreqq6o7JM//nPcsnrwhAADAKl73KwAAsAgBAAAACxEAAACwEAEAAAALEQAAALAQAQAAAAsRAAAAsBABAAAACxEAAACwEAEAAAALEQAAALAQAQAAAAsRAAAAsBABAAAAC7EdcJ3btGmTrF+/Xl555RXn64YNGyQej0sikXjTMTo6KvxxA6i2m2++WRYvXuzeQ60iANSRP/zhD3LPPffI/fffLy+++KKsXbvWfWSLaDQqgUDAua1/rHpks1nJ5XLO13Q67TwGANX03HPPyS677OLeQ60iANSw1atXy29/+1un6N93331Oy14tXLhQfD6fc7+vr885BwC14tlnn5Vdd93VvYdaRQCoMY888ojcdtttcvvtt8vLL78sTU1N0t7e7nTf9/T00IUPoOatWbNGli5d6t5DrSIA1ICnn35abr31VqfwP//88043vt/vd67bA0C9IQDUB2YBzKFf/vKX8p73vEf23HNP+eY3v+m08JVeq6f4AwCqiQAwy3Qw3i233CJve9vb5MMf/rA89dRTEgwGna59rucDAGYLAWCWaIv+Bz/4gey8885y4oknOq19r9crvb29kkql3GcBADA7CACz4I477nBGxJ555plbp+e9+uqrzvQ8AADmAgGginSu/uGHHy7HH3+808rXa/svvfSS+ygAAHOHAFAFWux1UN8ee+whf/nLX5w5+7piHwAAtYIAUGG6Sp+O6j///POdwj80NOQM/AMAoJYQACokk8nIGWecIQcffLBs3rzZKfqFlfsAAKg1BIAK0Ov6Bx10kFx11VVOq39gYMB9BACA2kQAmKGf//zn8ta3vtVZt7+w6Q4AALWOADBN2uV/1llnybJly5x1+pPJpPsIAAC1jwAwDXpt//3vf79ceeWVzmI+LOQDAKg3BIAy6Qp+7373u53R/trdz2I+AIB6RAAog27P+453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hAAAAHgTHfX/jW98Qw466CD3DBoNAQAAsA2/3y8f/OAHWfGvwREAAABbafFfuHChrFixwj2DRkUAAAA49Lq/+sUvfiFtbW3ObTQuAgAAYKtbb71V9tlnH/ceGhkBAADg+P73vy8nnHCCew+NjgAAAJDzzjtPvvCFL7j3YAMCAABYTK/7f/rTn5YLLrjAPQNbEAAAwFJa/I899li2+LUUAQAALPWxj31Mbr/9dvF6KQU24k8dACykXf633HKL+Hw+9wxsQwAAAEtol78W/JtvvtkZ9Ae7EQAAwAJa+CORiPzud7+TT3ziE+5Z2IwAAAANTrf17erqkoceekgOPvhg9yxsRwAAgAamLf8DDzxQHn/8cdlrr73cswABAAAall7zP/fcc+X++++X7u5u9yywBQEAABqMtvpjsZjce++9cv755zPND0XxXwUANBAt/rqZz5o1a7jej0kRAACgAehAv9bWVvnP//xP+ctf/iILFixwHwGKIwAAQB3TFr8ep556qrz00kvyuc99ji5/lIT/SgCgTgWDQdlzzz1l9erVcvXVVzvX/YFSEQAAoM6Ew2GZP3++3HjjjfK3v/2N6X2YFgIAANQBndIXjUZlxx13lCuvvFLWrVsnH/3oR91HgfIRAACghun1/VAoJLvvvrv89Kc/lbVr1zrX+fUcMBMEAACoMTqITwu8fj3yyCPlj3/8ozz11FNy/PHHOz0BQCUQAACgRuhUPqXz+L/1rW/J+vXrZdWqVXLAAQc454FKargAQDoGUC90d76Ct771rc4WvdrF/+ijj8qZZ57JXH5UFT0AADALCoP4/H6/c3/hwoWybNky+dnPfiY9PT3OaP6vfe1rstNOOzmPA9XmyRvu7YZw8skny0033SQN9mMBqCM6cC+bzbr3RBYtWiR77LGHLF26VPbff3854ogjZPHixe6jwNxouADw7W9/W26//XYCAICq0kV4tAu/qanJadnr1+bmZmcxns7OTqfgL1myxBm9D9SihgsAAABgaowBAADAQgQAAAAsRAAAAMBCBAAAACxEAAAAwEIEAAAALEQAAADAQgQAAAAsRAAAAMBCBAAAACxEAAAAwEIEAAAALEQAAADAQgQAAAAsRAAAAMBCBAAAACxEAAAAwEIEAAAALEQAAADAOiL/H29e4lkJxu7eAAAAAElFTkSuQmCC';
+
+  // ---------- utilidades ----------
+  function cv(w, h) {
+    var c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    return c;
+  }
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function loadImage(src) {
+    return new Promise(function (resolve, reject) {
+      var im = new Image();
+      im.onload = function () { resolve(im); };
+      im.onerror = function () { reject(new Error('Não foi possível carregar a arte do cartão')); };
+      im.src = src;
+    });
+  }
+
+  // ---------- arte (canvas 2D) ----------
+  function isBg(p, i) {
+    return p[i + 3] < 16 || (p[i] > 238 && p[i + 1] > 238 && p[i + 2] > 238);
+  }
+
+  // Recorta o cartão, separa o fundo externo e transforma o preto em vazio.
+  function processArt(img) {
+    var iw = img.naturalWidth, ih = img.naturalHeight;
+    var t = cv(iw, ih), tx = t.getContext('2d');
+    tx.drawImage(img, 0, 0);
+    var fp = tx.getImageData(0, 0, iw, ih).data;
+    var x, y, k;
+
+    // 1) caixa do cartão (tudo que não é fundo branco/transparente)
+    var x0 = iw, y0 = ih, x1 = -1, y1 = -1;
+    for (y = 0; y < ih; y++) {
+      for (x = 0; x < iw; x++) {
+        if (!isBg(fp, (y * iw + x) * 4)) {
+          if (x < x0) x0 = x;
+          if (x > x1) x1 = x;
+          if (y < y0) y0 = y;
+          if (y > y1) y1 = y;
+        }
+      }
+    }
+    if (x1 < 0) { x0 = 0; y0 = 0; x1 = iw - 1; y1 = ih - 1; }
+    var w = x1 - x0 + 1, h = y1 - y0 + 1;
+
+    var cc = cv(w, h), cx = cc.getContext('2d');
+    var out = cx.createImageData(w, h), p = out.data;
+    for (y = 0; y < h; y++) {
+      for (x = 0; x < w; x++) {
+        var s = ((y + y0) * iw + (x + x0)) * 4, d = (y * w + x) * 4;
+        p[d] = fp[s]; p[d + 1] = fp[s + 1]; p[d + 2] = fp[s + 2]; p[d + 3] = fp[s + 3];
+      }
+    }
+
+    // 2) fundo externo = região de fundo ligada às bordas (o texto branco dentro do cartão não é atingido)
+    var bg = new Uint8Array(w * h), stack = [];
+    function seed(sx, sy) {
+      var q = sy * w + sx;
+      if (!bg[q] && isBg(p, q * 4)) { bg[q] = 1; stack.push(q); }
+    }
+    for (x = 0; x < w; x++) { seed(x, 0); seed(x, h - 1); }
+    for (y = 0; y < h; y++) { seed(0, y); seed(w - 1, y); }
+    while (stack.length) {
+      k = stack.pop();
+      x = k % w; y = (k - x) / w;
+      if (x > 0) seed(x - 1, y);
+      if (x < w - 1) seed(x + 1, y);
+      if (y > 0) seed(x, y - 1);
+      if (y < h - 1) seed(x, y + 1);
+    }
+    // engrossa o fundo para eliminar o contorno suavizado do cartão (sem linhas claras ao redor)
+    var grow = Math.max(4, Math.round(w * 0.008));
+    for (var it = 0; it < grow; it++) {
+      var nb = bg.slice();
+      for (y = 0; y < h; y++) {
+        for (x = 0; x < w; x++) {
+          k = y * w + x;
+          if (bg[k]) continue;
+          if ((x > 0 && bg[k - 1]) || (x < w - 1 && bg[k + 1]) || (y > 0 && bg[k - w]) || (y < h - 1 && bg[k + w])) nb[k] = 1;
+        }
+      }
+      bg = nb;
+    }
+    // limpa também uma margem junto às bordas do recorte, onde o contorno do cartão fica cinza claro
+    var margin = Math.max(4, Math.round(w * 0.012));
+    for (y = 0; y < h; y++) {
+      for (x = 0; x < w; x++) {
+        if (x < margin || x >= w - margin || y < margin || y >= h - margin) bg[y * w + x] = 1;
+      }
+    }
+
+    // 3) preto vira vazio; o resto mantém a cor original
+    for (k = 0; k < w * h; k++) {
+      var i = k * 4;
+      if (bg[k]) { p[i + 3] = 0; continue; }
+      var m = Math.max(p[i], p[i + 1], p[i + 2]);
+      p[i + 3] = Math.round(p[i + 3] * clamp((m - 10) / 34, 0, 1));
+    }
+    cx.putImageData(out, 0, 0);
+    return { canvas: cc, w: w, h: h };
+  }
+
+  // Uma faixa vertical da arte, na resolução da textura
+  function makeBand(art, CH, band) {
+    var c = cv(CW, CH), x = c.getContext('2d');
+    x.imageSmoothingEnabled = true;
+    x.imageSmoothingQuality = 'high';
+    var f0 = band[0], f1 = band[1];
+    x.drawImage(art.canvas, 0, f0 * art.h, art.w, (f1 - f0) * art.h, 0, f0 * CH, CW, (f1 - f0) * CH);
+    return c;
+  }
+
+  // ---------- geometria ----------
+  function cardShape(H) {
+    var s = new THREE.Shape();
+    var x = -W / 2, y = -H / 2;
+    var bl = R_SMALL, tr = R_SMALL, tl = R_BIG, br = R_BIG;
+    s.moveTo(x + bl, y);
+    s.lineTo(x + W - br, y);
+    s.absarc(x + W - br, y + br, br, -Math.PI / 2, 0, false);
+    s.lineTo(x + W, y + H - tr);
+    s.absarc(x + W - tr, y + H - tr, tr, 0, Math.PI / 2, false);
+    s.lineTo(x + tl, y + H);
+    s.absarc(x + tl, y + H - tl, tl, Math.PI / 2, Math.PI, false);
+    s.lineTo(x, y + bl);
+    s.absarc(x + bl, y + bl, bl, Math.PI, Math.PI * 1.5, false);
+    return s;
+  }
+
+  // Ambiente de estúdio procedural para os reflexos
+  function buildEnvironment(renderer) {
+    var pm = new THREE.PMREMGenerator(renderer);
+    var sc = new THREE.Scene();
+    sc.background = new THREE.Color(0x0c0c10);
+    function panel(w, h, x, y, z, color, k) {
+      var m = new THREE.Mesh(
+        new THREE.PlaneGeometry(w, h),
+        new THREE.MeshBasicMaterial({ color: new THREE.Color(color).multiplyScalar(k), side: THREE.DoubleSide })
+      );
+      m.position.set(x, y, z);
+      m.lookAt(0, 0, 0);
+      sc.add(m);
+    }
+    panel(14, 3, 0, 9, 3, 0xffffff, 3);       // softbox superior
+    panel(3, 12, -9, 1, 4, 0xdfe6ff, 1.8);      // faixa esquerda
+    panel(3, 10, 9, 0, -2, 0xff6b5a, 3);      // reflexo avermelhado à direita
+    panel(12, 4, 0, -6, 6, 0xff2a2a, 2.6);    // reflexo vermelho vindo de baixo
+    panel(8, 8, 0, 2, -10, 0xffffff, 0.6);    // fundo
+    var rt = pm.fromScene(sc, 0.04);
+    pm.dispose();
+    sc.traverse(function (o) {
+      if (o.isMesh) { o.geometry.dispose(); o.material.dispose(); }
+    });
+    return rt;
+  }
+
+  // ---------- montagem ----------
+  function mount(host, options) {
+    if (!global.THREE) return Promise.reject(new Error('three.js r128 não encontrado'));
+    var o = Object.assign({
+      idle: true, interactive: true, startSide: 'front', tilt: 1, shadow: false, artSrc: null, base: 'black'
+    }, options || {});
+    return loadImage(o.artSrc || ART_DATA_URI).then(function (img) {
+      return build(host, o, processArt(img));
+    });
+  }
+
+  function build(host, o, art) {
+    var H = W * art.h / art.w;                       // altura segue a proporção do PNG
+    var CH = Math.round(CW * art.h / art.w);
+    var reduce = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var idleOn = o.idle && !reduce;
+
+    if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.78;
+    var el = renderer.domElement;
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', 'Cartão Tsu Design em 3D. Arraste para girar.');
+    el.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;' +
+      (o.interactive ? 'cursor:grab;' : '');
+    host.appendChild(el);
+
+    var scene = new THREE.Scene();
+    var envRT = buildEnvironment(renderer);
+    scene.environment = envRT.texture;
+
+    var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x20202a, 0.18));
+    var key = new THREE.DirectionalLight(0xffffff, 0.62);
+    key.position.set(-3, 4, 6);
+    scene.add(key);
+    var rim = new THREE.DirectionalLight(0xff4d4d, 0.8);
+    rim.position.set(5, 1, -4);
+    scene.add(rim);
+    // luz de reflexo vermelha vinda de baixo
+    var under = new THREE.PointLight(0xff1a26, 1.7, 7, 1.4);
+    under.position.set(0, -1.9, 1.3);
+    scene.add(under);
+    var under2 = new THREE.DirectionalLight(0xff2a2a, 0.55);
+    under2.position.set(0, -5, 3);
+    scene.add(under2);
+
+    var disposables = [];
+    var maxAniso = renderer.capabilities.getMaxAnisotropy();
+    function tex(canvas) {
+      var t = new THREE.CanvasTexture(canvas);
+      t.encoding = THREE.sRGBEncoding;
+      t.anisotropy = maxAniso;
+      disposables.push(t);
+      return t;
+    }
+    function keep(x) { disposables.push(x); return x; }
+
+    var pivot = new THREE.Group();
+    pivot.rotation.order = 'YXZ';
+    scene.add(pivot);
+
+    // corpo
+    var geo = keep(new THREE.ExtrudeGeometry(cardShape(H), {
+      depth: D, bevelEnabled: true, bevelThickness: BEV, bevelSize: BEV, bevelOffset: -BEV,
+      bevelSegments: 5, curveSegments: 64
+    }));
+    geo.translate(0, 0, -D / 2);
+    // Preto total: faces e laterais foscas, sem reflexo claro e sem contorno branco ao redor.
+    // O ExtrudeGeometry usa o grupo 0 para as faces (frente e verso) e o grupo 1 para as laterais.
+    var faceMat = keep(new THREE.MeshStandardMaterial({
+      color: 0x010101, roughness: 0.9, metalness: 0, envMapIntensity: 0.04
+    }));
+    var sideMat = keep(new THREE.MeshStandardMaterial({
+      color: 0x020203, roughness: 0.75, metalness: 0, envMapIntensity: 0.08
+    }));
+    var state = { base: o.base === 'white' ? 'white' : 'black', logo: null, scale: 1 };
+    // base preta (padrão) ou branca
+    function applyBase() {
+      var white = state.base === 'white';
+      faceMat.color.setHex(white ? 0xc6c6cb : 0x010101);
+      faceMat.roughness = white ? 0.55 : 0.9;
+      faceMat.envMapIntensity = white ? 0.14 : 0.04;
+      sideMat.color.setHex(white ? 0xb4b4ba : 0x020203);
+      sideMat.roughness = white ? 0.5 : 0.75;
+      sideMat.envMapIntensity = white ? 0.2 : 0.08;
+      faceMat.needsUpdate = true; sideMat.needsUpdate = true;
+    }
+    pivot.add(new THREE.Mesh(geo, [faceMat, sideMat]));
+
+    var front = new THREE.Group();
+    front.position.z = FACE_Z + 0.0015;
+    pivot.add(front);
+    var back = new THREE.Group();
+    back.rotation.y = Math.PI;
+    back.position.z = -(FACE_Z + 0.0015);
+    pivot.add(back);
+
+    var planeGeo = keep(new THREE.PlaneGeometry(W, H));
+
+    // texturas e materiais das camadas de relevo (recriados quando a base ou a logo mudam)
+    var live = [];
+    function ltex(canvas) {
+      var t = new THREE.CanvasTexture(canvas);
+      t.encoding = THREE.sRGBEncoding;
+      t.anisotropy = maxAniso;
+      live.push(t);
+      return t;
+    }
+    function lkeep(x) { live.push(x); return x; }
+
+    // empilha camadas para dar volume (extrusão) a uma arte
+    function stack(group, texture, cfg) {
+      var sideMat = lkeep(new THREE.MeshStandardMaterial({
+        map: texture, alphaTest: 0.5, roughness: cfg.roughness, metalness: cfg.metalness, color: cfg.side
+      }));
+      var topMat = lkeep(new THREE.MeshStandardMaterial({
+        map: texture, alphaTest: 0.5, roughness: cfg.roughness, metalness: cfg.metalness, color: 0xffffff,
+        emissive: new THREE.Color(0xffffff), emissiveMap: texture, emissiveIntensity: cfg.glow,
+        toneMapped: false // mantém as cores fiéis ao original
+      }));
+      for (var i = 0; i < cfg.n; i++) {
+        var m = new THREE.Mesh(planeGeo, i === cfg.n - 1 ? topMat : sideMat);
+        m.position.z = i * cfg.gap;
+        group.add(m);
+      }
+    }
+
+    // sobre base branca, o que é claro na arte (texto, ondas) vira escuro
+    function tintDark(src) {
+      var c = cv(src.width, src.height), x = c.getContext('2d');
+      x.drawImage(src, 0, 0);
+      var d = x.getImageData(0, 0, c.width, c.height), p = d.data;
+      for (var i = 0; i < p.length; i += 4) {
+        if (p[i + 3] && Math.min(p[i], p[i + 1], p[i + 2]) > 160) { p[i] = p[i + 1] = p[i + 2] = 20; }
+      }
+      x.putImageData(d, 0, 0);
+      return c;
+    }
+
+    // arte final: a original da Tsu, ou a logo do cliente no lugar do pássaro e do texto (as ondas NFC ficam)
+    function composeArt() {
+      var white = state.base === 'white';
+      var c = cv(art.w, art.h), x = c.getContext('2d');
+      x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
+      var tinted = white ? tintDark(art.canvas) : art.canvas;
+      if (!state.logo) { x.drawImage(tinted, 0, 0); return { canvas: c, w: art.w, h: art.h }; }
+      var wy = Math.round(BAND_WIFI[0] * art.h);
+      x.drawImage(tinted, 0, wy, art.w, art.h - wy, 0, wy, art.w, art.h - wy);
+      var lg = white ? state.logo.light : state.logo.dark;
+      var k = Math.min((0.74 * art.w) / lg.width, (0.46 * art.h) / lg.height) * state.scale;
+      var dw = lg.width * k, dh = lg.height * k;
+      x.drawImage(lg, art.w / 2 - dw / 2, 0.33 * art.h - dh / 2, dw, dh);
+      return { canvas: c, w: art.w, h: art.h };
+    }
+
+    function rebuildLayers() {
+      [front, back].forEach(function (g) {
+        while (g.children.length) g.remove(g.children[0]);
+      });
+      live.forEach(function (d) { if (d && d.dispose) d.dispose(); });
+      live = [];
+      var a = composeArt(), layers;
+      if (state.logo) {
+        layers = [
+          { tex: ltex(makeBand(a, CH, [0, BAND_WIFI[0]])), cfg: { n: 8, gap: 0.0030, side: 0x8a8a8a, roughness: 0.4, metalness: 0.15, glow: 0.15 } },
+          { tex: ltex(makeBand(a, CH, BAND_WIFI)), cfg: { n: 5, gap: 0.0026, side: 0xb0b0b0, roughness: 0.42, metalness: 0.1, glow: 0.16 } }
+        ];
+      } else {
+        layers = [
+          { tex: ltex(makeBand(a, CH, BAND_CRANE)), cfg: { n: 6, gap: 0.0030, side: 0x6a6a6a, roughness: 0.35, metalness: 0.2, glow: 0.12 } },
+          { tex: ltex(makeBand(a, CH, BAND_TEXT)),  cfg: { n: 8, gap: 0.0028, side: 0x9a9a9a, roughness: 0.42, metalness: 0.1, glow: 0.16 } },
+          { tex: ltex(makeBand(a, CH, BAND_WIFI)),  cfg: { n: 5, gap: 0.0026, side: 0xb0b0b0, roughness: 0.42, metalness: 0.1, glow: 0.16 } }
+        ];
+      }
+      [front, back].forEach(function (g) {
+        layers.forEach(function (l) { stack(g, l.tex, l.cfg); });
+      });
+      return a;
+    }
+    applyBase();
+    rebuildLayers();
+
+    // sombra
+    var shadow = null;
+    if (o.shadow) {
+      var sc = cv(256, 256), sx = sc.getContext('2d');
+      var g = sx.createRadialGradient(128, 128, 4, 128, 128, 126);
+      g.addColorStop(0, 'rgba(0,0,0,0.55)');
+      g.addColorStop(0.5, 'rgba(0,0,0,0.22)');
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      sx.fillStyle = g; sx.fillRect(0, 0, 256, 256);
+      var st = new THREE.CanvasTexture(sc);
+      disposables.push(st);
+      var shGeo = keep(new THREE.PlaneGeometry(3.4, 2.2));
+      var shMat = keep(new THREE.MeshBasicMaterial({ map: st, transparent: true, depthWrite: false, toneMapped: false }));
+      shadow = new THREE.Mesh(shGeo, shMat);
+      shadow.rotation.x = -Math.PI / 2;
+      shadow.position.y = -H / 2 - 0.55;
+      scene.add(shadow);
+    }
+
+    // ---------- câmera e tamanho ----------
+    function resize() {
+      var w = host.clientWidth || 1, h = host.clientHeight || 1;
+      renderer.setPixelRatio(Math.min(global.devicePixelRatio || 1, 2));
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      var t = Math.tan(camera.fov * Math.PI / 360);
+      var d = Math.max((H * 1.42) / (2 * t), (W * 1.55) / (2 * t * camera.aspect));
+      camera.position.set(0, -0.15, d);
+      camera.lookAt(0, -0.15, 0);
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    var ro = new ResizeObserver(resize);
+    ro.observe(host);
+
+    // ---------- estado e interação ----------
+    var st8 = {
+      base: o.startSide === 'back' ? Math.PI : 0,
+      dragX: 0, dragY: 0, hx: 0, hy: 0, hoverT: 0,
+      dragging: false, lx: 0, ly: 0
+    };
+    var cur = { x: REST_X, y: st8.base + REST_Y - (reduce ? 0 : 0.9) };
+    var hoverW = 0, time = 0, last = performance.now(), raf = 0;
+
+    function onDown(e) {
+      st8.dragging = true; st8.lx = e.clientX; st8.ly = e.clientY;
+      try { el.setPointerCapture(e.pointerId); } catch (err) {}
+      el.style.cursor = 'grabbing';
+    }
+    function onMove(e) {
+      var r = host.getBoundingClientRect();
+      if (st8.dragging) {
+        st8.dragY += (e.clientX - st8.lx) * 0.010;
+        st8.dragX = clamp(st8.dragX + (e.clientY - st8.ly) * 0.006, -0.5, 0.5);
+        st8.lx = e.clientX; st8.ly = e.clientY;
+      } else if (e.pointerType === 'mouse') {
+        st8.hx = (e.clientX - r.left) / r.width - 0.5;
+        st8.hy = (e.clientY - r.top) / r.height - 0.5;
+        st8.hoverT = 1;
+      }
+    }
+    function onUp() {
+      if (!st8.dragging) return;
+      st8.dragging = false;
+      st8.base = Math.round((st8.base + st8.dragY) / Math.PI) * Math.PI;
+      st8.dragY = 0; st8.dragX = 0;
+      el.style.cursor = 'grab';
+    }
+    function onLeave() { st8.hoverT = 0; }
+
+    if (o.interactive) {
+      el.addEventListener('pointerdown', onDown);
+      el.addEventListener('pointermove', onMove);
+      el.addEventListener('pointerup', onUp);
+      el.addEventListener('pointercancel', onUp);
+      el.addEventListener('pointerleave', onLeave);
+    }
+
+    function frame(now) {
+      raf = requestAnimationFrame(frame);
+      var dt = Math.min((now - last) / 1000, 0.05);
+      last = now; time += dt;
+      hoverW += (st8.hoverT - hoverW) * (1 - Math.exp(-dt * 5));
+
+      var idle = idleOn ? 1 : 0;
+      var iy = Math.sin(time * 0.7) * 0.22 * idle * (1 - hoverW);
+      var ix = Math.sin(time * 0.9 + 1) * 0.05 * idle * (1 - hoverW);
+      var ty = st8.base + st8.dragY + REST_Y + st8.hx * 0.9 * o.tilt * hoverW + iy;
+      var tx = REST_X + st8.dragX + st8.hy * 0.5 * o.tilt * hoverW + ix;
+      var k = 1 - Math.exp(-dt * 7);
+      cur.y += (ty - cur.y) * k;
+      cur.x += (tx - cur.x) * k;
+      pivot.rotation.set(cur.x, cur.y, 0);
+
+      var fl = idle ? Math.sin(time * 1.1) * 0.045 : 0;
+      pivot.position.y = fl;
+      if (shadow) {
+        shadow.material.opacity = clamp(0.95 - fl * 3, 0, 1);
+        var sk = 1 - fl * 0.8;
+        shadow.scale.set(sk, sk, 1);
+      }
+      renderer.render(scene, camera);
+    }
+    raf = requestAnimationFrame(frame);
+
+    // pausa quando o cartão sai da tela
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
+      else if (!entries[0].isIntersecting && raf) { cancelAnimationFrame(raf); raf = 0; }
+    });
+    io.observe(host);
+
+    return {
+      flip: function () { st8.base += Math.PI; },
+      // base 'black' | 'white'
+      setBase: function (b) { state.base = b === 'white' ? 'white' : 'black'; applyBase(); rebuildLayers(); },
+      // logo do cliente: { dark: canvas legível no preto, light: canvas legível no branco }; null volta à arte da Tsu
+      setLogo: function (v, scale) { state.logo = v || null; if (scale) state.scale = scale; rebuildLayers(); },
+      setScale: function (s) { state.scale = s; if (state.logo) rebuildLayers(); },
+      artCanvas: function () { return composeArt().canvas; },
+      destroy: function () {
+        if (raf) cancelAnimationFrame(raf);
+        raf = 0;
+        io.disconnect(); ro.disconnect();
+        el.removeEventListener('pointerdown', onDown);
+        el.removeEventListener('pointermove', onMove);
+        el.removeEventListener('pointerup', onUp);
+        el.removeEventListener('pointercancel', onUp);
+        el.removeEventListener('pointerleave', onLeave);
+        disposables.forEach(function (d) { if (d && d.dispose) d.dispose(); });
+        live.forEach(function (d) { if (d && d.dispose) d.dispose(); });
+        envRT.dispose();
+        renderer.dispose();
+        if (el.parentNode) el.parentNode.removeChild(el);
+      }
+    };
+  }
+
+  global.TsuCard = { mount: mount };
+})(window);
+
+
+</script>
+<script>
+// Para ativar o botão de WhatsApp, coloque o número com DDI e DDD, só dígitos. Exemplo: "5562999999999"
+var WHATSAPP = "5562992206897";
+(function () {
+  document.querySelectorAll(".item").forEach(function (a) {
+    var msg = "Olá, Natanael! Quero um orçamento do item " + a.dataset.code + " (" + a.dataset.name + ").";
+    a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+    a.target = "_blank"; a.rel = "noopener";
+  });
+  // Fotos extras de cada segmento. A primeira foto de cada grupo é a que aparece na galeria.
+  var SETS = {
+    neon: [
+      ["img/neon-sax.jpg", "Neon LED colorido em formato de saxofonista sobre parede com folhagens", "Neon LED · Saxofonista"],
+      ["img/neon-phelipe.jpg", "Letreiro em neon LED branco com o nome Phelipe Chumbo", "Neon LED · Letreiro"]
+    ],
+    acrilico: [
+      ["img/acrilico-rb-2.jpg", "Logo Ribeiro Barros Advocacia em acrílico dourado espelhado e branco na parede de cimento queimado", "Logo em acrílico · Ribeiro Barros"],
+      ["img/acrilico-ponte.jpg", "Logo Ponte Capital em acrílico branco e azul aplicado na parede da sala de reunião", "Logo em acrílico · Ponte Capital"]
+    ],
+    painel: [
+      ["img/ponte-2.jpg", "Painel Ponte Capital com letras retroiluminadas em LED azul na recepção", "Painel iluminado · Ponte Capital"]
+    ],
+    cartoes: [
+      ["img/nfc-mockup.jpg", "Cards NFC da Tsu. Design de 5 x 9 cm com 2 mm de espessura, conectando a um celular", "Card NFC · Tsu. Design"]
+    ]
+  };
+  var lb = document.getElementById("lb"), img = document.getElementById("lbimg"), cap = document.getElementById("lbcap");
+  var prev = document.getElementById("lbprev"), next = document.getElementById("lbnext");
+  var list = [], idx = 0, opener = null;
+  document.querySelectorAll("#trabalhos [data-cap]").forEach(function (b) {
+    var extra = SETS[b.getAttribute("data-set")];
+    if (extra && extra.length) {
+      var tag = document.createElement("span");
+      tag.className = "count"; tag.textContent = "+" + extra.length + (extra.length > 1 ? " fotos" : " foto");
+      b.appendChild(tag);
+      extra.forEach(function (f) { var p = new Image(); p.decoding = "async"; b.addEventListener("pointerenter", function () { p.src = f[0]; }, { once: true }); });
+    }
+  });
+  function show(i) {
+    idx = (i + list.length) % list.length;
+    var f = list[idx];
+    img.src = f[0]; img.alt = f[1];
+    cap.textContent = f[2];
+    if (list.length > 1) { var n = document.createElement("b"); n.textContent = (idx + 1) + " / " + list.length; cap.appendChild(n); }
+    prev.hidden = next.hidden = list.length < 2;
+  }
+  function close() { lb.hidden = true; img.removeAttribute("src"); if (opener) opener.focus(); }
+  document.getElementById("trabalhos").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-cap]"); if (!b) return;
+    var im = b.querySelector("img"), c = b.getAttribute("data-cap") || "";
+    list = [[b.getAttribute("data-full") || im.getAttribute("src"), im.alt, c]].concat(SETS[b.getAttribute("data-set")] || []);
+    opener = b; lb.hidden = false; show(0);
+    document.getElementById("lbx").focus();
+  });
+  prev.addEventListener("click", function (e) { e.stopPropagation(); show(idx - 1); });
+  next.addEventListener("click", function (e) { e.stopPropagation(); show(idx + 1); });
+  var swiped = false;
+  img.addEventListener("click", function () { if (swiped) { swiped = false; return; } if (list.length > 1) show(idx + 1); });
+  lb.addEventListener("click", function (e) { if (e.target === lb || e.target.id === "lbx" || e.target === cap) close(); });
+  document.addEventListener("keydown", function (e) {
+    if (lb.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowRight" && list.length > 1) show(idx + 1);
+    else if (e.key === "ArrowLeft" && list.length > 1) show(idx - 1);
+  });
+  var sx = null;
+  lb.addEventListener("touchstart", function (e) { swiped = false; sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", function (e) {
+    if (sx === null || list.length < 2) return;
+    var dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 40) { swiped = true; setTimeout(function () { swiped = false; }, 400); } else return;
+    show(dx < 0 ? idx + 1 : idx - 1);
+  });
+})();
+
+(function () {
+  var vids = Array.prototype.slice.call(document.querySelectorAll(".vcard video"));
+  var track = document.getElementById("vtrack"), pv = document.getElementById("vprev"), nx = document.getElementById("vnext");
+  function pauseAll(except) { vids.forEach(function (v) { if (v !== except && !v.paused) v.pause(); }); }
+  function updNav() {
+    pv.disabled = track.scrollLeft < 4;
+    nx.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  }
+  vids.forEach(function (v) {
+    var frame = v.parentNode, btn = frame.querySelector(".vplay");
+    v.controls = false;
+    btn.addEventListener("click", function () {
+      v.controls = true;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { v.controls = true; });
+    });
+    v.addEventListener("play", function () { pauseAll(v); frame.classList.add("playing"); v.controls = true; });
+    v.addEventListener("ended", function () { frame.classList.remove("playing"); v.controls = false; v.currentTime = 0; });
+  });
+  function step(dir) {
+    var c = track.querySelector(".vcard"); if (!c) return;
+    var w = c.getBoundingClientRect().width + 18;
+    track.scrollBy({ left: dir * w * Math.max(1, Math.floor(track.clientWidth / w)), behavior: "smooth" });
+  }
+  pv.addEventListener("click", function () { step(-1); });
+  nx.addEventListener("click", function () { step(1); });
+  track.addEventListener("scroll", updNav, { passive: true });
+  window.addEventListener("resize", updNav);
+  updNav();
+})();
+
+// Cartão 3D com troca de logo e base preta/branca (three.js + módulo TsuCard)
+document.addEventListener("DOMContentLoaded", function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var host = $("card3dHost"), msg = $("card3dMsg"), flip = $("card3dFlip"), stage = $("c3Stage"), badge = $("c3Badge");
+  var drop = $("c3Drop"), input = $("c3Logo"), ctl = $("c3Ctl"), tam = $("c3Tam"), say = $("c3Msg"), cta = $("c3Cta");
+  var seg = Array.prototype.slice.call(document.querySelectorAll("#c3Tool .seg [role=radio]"));
+  var card = null, logo = null, base = "black", escala = 1, pend = false;
+
+  function aviso(t, erro) { say.textContent = t || ""; say.className = "ai-msg" + (erro ? " err" : ""); }
+  function fail() { msg.hidden = false; msg.textContent = "Não foi possível iniciar o 3D neste aparelho. Veja o cartão nas fotos abaixo."; flip.hidden = true; $("c3Tool").classList.add("off"); }
+  function sync() {
+    stage.classList.toggle("is-white", base === "white");
+    badge.classList.toggle("off", !!logo);
+    cta.classList.toggle("on", !!logo);
+    ctl.classList.toggle("on", !!logo);
+    if (!card) return;
+    card.setBase(base);
+    card.setLogo(logo, escala);
+  }
+  try {
+    if (!window.TsuCard || !window.THREE) { fail(); return; }
+    window.TsuCard.mount(host, { idle: true, interactive: true, startSide: "front", tilt: 1, shadow: false, base: base })
+      .then(function (c) { card = c; msg.hidden = true; if (logo || base !== "black") sync(); })
+      .catch(fail);
+  } catch (e) { fail(); return; }
+  flip.addEventListener("click", function () { if (card) card.flip(); });
+
+  function escolher(b, foco) {
+    base = b;
+    seg.forEach(function (s) { var on = s.getAttribute("data-base") === b; s.setAttribute("aria-checked", on ? "true" : "false"); s.tabIndex = on ? 0 : -1; if (on && foco) s.focus(); });
+    sync();
+    if (logo) aviso(logo.nota[b] || "");
+  }
+  seg.forEach(function (s, i) {
+    s.addEventListener("click", function () { escolher(s.getAttribute("data-base")); });
+    s.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft" || e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); escolher(seg[(i + 1) % seg.length].getAttribute("data-base"), true); }
+    });
+  });
+
+  var TIPOS = ["image/png", "image/jpeg", "image/webp", "image/svg+xml"];
+  function receber(file) {
+    if (!file) return;
+    var kit = window.TsuLogoKit;
+    if (!kit) { aviso("A ferramenta ainda está carregando. Tente de novo em instantes.", true); return; }
+    if (TIPOS.indexOf(file.type) < 0) { aviso("Use uma imagem PNG, JPG, WEBP ou SVG.", true); return; }
+    if (file.size > 25 * 1024 * 1024) { aviso("Essa imagem é muito grande. Use um arquivo de até 25 MB.", true); return; }
+    aviso("Aplicando a sua logo no cartão…");
+    kit.ler(file).then(function (im) {
+      var b = kit.preparar(im, file.type === "image/svg+xml");
+      var dk = kit.variante(b, "dark"), lt = kit.variante(b, "light");
+      logo = { dark: dk.canvas, light: lt.canvas, nota: {
+        black: dk.mudou ? "Pronto! Ajustamos o contraste da logo para a base preta." : "Pronto! Gire o cartão e teste também a base branca.",
+        white: lt.mudou ? "Pronto! Ajustamos o contraste da logo para a base branca." : "Pronto! Gire o cartão e teste também a base preta."
+      } };
+      var pv = drop.querySelector("img");
+      if (pv.dataset.url) URL.revokeObjectURL(pv.dataset.url);
+      b.toBlob(function (bl) { if (!bl) return; pv.dataset.url = URL.createObjectURL(bl); pv.src = pv.dataset.url; });
+      drop.classList.add("has-file");
+      sync();
+      aviso(logo.nota[base]);
+    }).catch(function (e) { aviso((e && e.message) || "Não foi possível usar essa imagem.", true); });
+  }
+  input.addEventListener("change", function () { receber(input.files[0]); input.value = ""; });
+  ["dragenter", "dragover"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("over"); }); });
+  ["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
+  drop.addEventListener("drop", function (e) { receber(e.dataTransfer.files[0]); });
+
+  tam.addEventListener("input", function () {
+    escala = tam.value / 100; $("c3TamV").textContent = tam.value + "%";
+    if (card && !pend) { pend = true; requestAnimationFrame(function () { pend = false; card.setScale(escala); }); }
+  });
+  $("c3Reset").addEventListener("click", function () {
+    logo = null; escala = 1; tam.value = 100; $("c3TamV").textContent = "100%";
+    drop.classList.remove("has-file"); aviso("");
+    sync();
+  });
+  $("c3Zap").addEventListener("click", function (e) {
+    var w = (typeof WHATSAPP !== "undefined" ? WHATSAPP : "5562992206897");
+    e.currentTarget.href = "https://wa.me/" + w + "?text=" + encodeURIComponent("Olá, Natanael! Testei a minha logo no Card NFC 3D (base " + (base === "white" ? "branca" : "preta") + ") pelo site e quero um orçamento.");
+  });
+  $("c3Zap").href = "https://wa.me/5562992206897";
+  sync();
+});
+</script>
+<script>
+/* Tsu AI: troca a logo da Tsu pela logo do cliente nas imagens do Card e Key Card NFC.
+   Tudo roda no navegador (canvas). As posições abaixo vêm das imagens img/base-*.jpg,
+   que são as fotos originais sem a logo da Tsu. */
+(function () {
+  var BASES = {
+    card: {
+      canvas: "cvCard", plate: "img/base-card.jpg", demo: "img/modelo-card.jpg", badge: "bgCard", dl: "dlCard",
+      slots: [
+        { cx: 601,  cy: 283, w: 196, h: 212, surface: "light" },
+        { cx: 892,  cy: 284, w: 166, h: 208, surface: "dark" },
+        // card inclinado ao lado: encolhe na horizontal e inclina junto com a face
+        { cx: 1088, cy: 294, w: 166, h: 208, surface: "dark", m: [0.33, 0, 0.125, 0.89] }
+      ]
+    },
+    keycard: {
+      canvas: "cvKey", plate: "img/base-keycard.jpg", demo: "img/modelo-keycard.jpg", badge: "bgKey", dl: "dlKey",
+      slots: [
+        { cx: 405, cy: 353, w: 326, h: 132, surface: "light", rot: 1.8 },
+        { cx: 948, cy: 372, w: 326, h: 132, surface: "dark",  rot: 5 }
+      ]
+    }
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var msg = $("aiMsg"), input = $("aiLogo"), drop = $("aiDrop"), ctl = $("aiCtl"), tam = $("aiTam");
+  var logo = null;               // { base, dark, light, darkMudou, lightMudou }
+  var escala = 1;
+  var pronto = {};               // imagens carregadas
+
+  function aviso(t, erro) { msg.textContent = t || ""; msg.className = "ai-msg" + (erro ? " err" : ""); }
+  function carregar(src) {
+    return new Promise(function (ok, no) { var i = new Image(); i.onload = function () { ok(i); }; i.onerror = no; i.src = src; });
+  }
+
+  // ---------- leitura e preparo da logo ----------
+  function lerArquivo(file) {
+    return new Promise(function (ok, no) {
+      var url = URL.createObjectURL(file), im = new Image();
+      im.onload = function () { URL.revokeObjectURL(url); ok(im); };
+      im.onerror = function () { URL.revokeObjectURL(url); no(new Error("Não foi possível abrir essa imagem.")); };
+      im.src = url;
+    });
+  }
+
+  // remove fundo liso ligado às bordas (ex.: logo em JPG com fundo branco)
+  function removerFundo(p, w, h) {
+    var rs = [], gs = [], bs = [], i, x, y;
+    function amostra(x, y) { var k = (y * w + x) * 4; rs.push(p[k]); gs.push(p[k + 1]); bs.push(p[k + 2]); }
+    for (x = 0; x < w; x++) { amostra(x, 0); amostra(x, h - 1); }
+    for (y = 0; y < h; y++) { amostra(0, y); amostra(w - 1, y); }
+    function med(a) { a.sort(function (m, n) { return m - n; }); return a[a.length >> 1]; }
+    var br = med(rs.slice()), bg = med(gs.slice()), bb = med(bs.slice());
+    var tol = 46;
+    function dist(k) { var a = p[k] - br, b = p[k + 1] - bg, c = p[k + 2] - bb; return Math.sqrt(a * a + b * b + c * c); }
+    var perto = 0;
+    for (i = 0; i < rs.length; i++) { var a = rs[i] - br, b = gs[i] - bg, c = bs[i] - bb; if (Math.sqrt(a * a + b * b + c * c) < tol) perto++; }
+    if (perto / rs.length < 0.85) return;            // não é fundo liso
+    var vis = new Uint8Array(w * h), stack = new Int32Array(w * h), sp = 0;
+    function push(x, y) { var n = y * w + x; if (!vis[n] && dist(n * 4) < tol) { vis[n] = 1; stack[sp++] = n; } }
+    for (x = 0; x < w; x++) { push(x, 0); push(x, h - 1); }
+    for (y = 0; y < h; y++) { push(0, y); push(w - 1, y); }
+    while (sp) {
+      var n = stack[--sp], cx = n % w, cy = (n / w) | 0;
+      if (cx > 0) push(cx - 1, cy); if (cx < w - 1) push(cx + 1, cy);
+      if (cy > 0) push(cx, cy - 1); if (cy < h - 1) push(cx, cy + 1);
+    }
+    for (y = 0; y < h; y++) for (x = 0; x < w; x++) {
+      var m = y * w + x, k = m * 4;
+      if (vis[m]) { p[k + 3] = 0; continue; }
+      var viz = (x > 0 && vis[m - 1]) || (x < w - 1 && vis[m + 1]) || (y > 0 && vis[m - w]) || (y < h - 1 && vis[m + w]);
+      if (viz) { var al = Math.max(0, Math.min(1, (dist(k) - 14) / (tol * 1.6))); p[k + 3] = Math.round(p[k + 3] * al); }
+    }
+  }
+
+  function prepararLogo(im, ehSvg) {
+    var nw = im.naturalWidth || im.width, nh = im.naturalHeight || im.height;
+    if (!nw || !nh) throw new Error("Não foi possível ler essa imagem.");
+    var esc = ehSvg ? 1000 / Math.max(nw, nh) : Math.min(1, 1000 / Math.max(nw, nh));
+    var w = Math.max(1, Math.round(nw * esc)), h = Math.max(1, Math.round(nh * esc));
+    var c = document.createElement("canvas"); c.width = w; c.height = h;
+    var ctx = c.getContext("2d"); ctx.drawImage(im, 0, 0, w, h);
+    var d = ctx.getImageData(0, 0, w, h), p = d.data, i, temAlpha = false;
+    for (i = 3; i < p.length; i += 4) { if (p[i] < 250) { temAlpha = true; break; } }
+    if (!temAlpha) removerFundo(p, w, h);
+    var x0 = w, y0 = h, x1 = -1, y1 = -1, x, y;
+    for (y = 0; y < h; y++) for (x = 0; x < w; x++) {
+      if (p[(y * w + x) * 4 + 3] > 12) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    }
+    if (x1 < 0) throw new Error("A imagem parece estar vazia. Envie uma logo com conteúdo visível.");
+    ctx.putImageData(d, 0, 0);
+    var tw = x1 - x0 + 1, th = y1 - y0 + 1;
+    var t = document.createElement("canvas"); t.width = tw; t.height = th;
+    t.getContext("2d").drawImage(c, x0, y0, tw, th, 0, 0, tw, th);
+    return t;
+  }
+
+  // versão da logo legível sobre superfície escura ("dark") ou clara ("light")
+  function variante(src, alvo) {
+    var w = src.width, h = src.height;
+    var c = document.createElement("canvas"); c.width = w; c.height = h;
+    var ctx = c.getContext("2d"); ctx.drawImage(src, 0, 0);
+    var d = ctx.getImageData(0, 0, w, h), p = d.data, i, mudou = false, soma = 0, peso = 0, trocado = 0;
+    for (i = 0; i < p.length; i += 4) {
+      if (p[i + 3] === 0) continue;
+      var r = p[i], g = p[i + 1], b = p[i + 2];
+      var lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255, chroma = Math.max(r, g, b) - Math.min(r, g, b);
+      if (alvo === "dark" && lum < 0.3 && chroma < 60) { p[i] = p[i + 1] = p[i + 2] = 255; trocado += p[i + 3]; lum = 1; }
+      else if (alvo === "light" && lum > 0.8 && chroma < 50) { p[i] = p[i + 1] = p[i + 2] = 17; trocado += p[i + 3]; lum = 0.07; }
+      soma += lum * p[i + 3]; peso += p[i + 3];
+    }
+    var media = peso ? soma / peso : 0.5;
+    mudou = peso > 0 && trocado / peso > 0.08;          // ignora só o contorno suavizado
+    // logo escura demais (ou clara demais) no conjunto: usa silhueta de uma cor só
+    if ((alvo === "dark" && media < 0.28) || (alvo === "light" && media > 0.82)) {
+      var cor = alvo === "dark" ? 255 : 17;
+      for (i = 0; i < p.length; i += 4) { if (p[i + 3]) { p[i] = p[i + 1] = p[i + 2] = cor; } }
+      mudou = true;
+    }
+    ctx.putImageData(d, 0, 0);
+    return { canvas: mudou ? c : src, mudou: mudou };
+  }
+
+  // ---------- desenho ----------
+  function desenhar(chave) {
+    var B = BASES[chave], cv = $(B.canvas), ctx = cv.getContext("2d");
+    var img = (logo ? pronto[chave + "plate"] : pronto[chave + "demo"]);
+    if (!img) return;
+    cv.width = img.naturalWidth; cv.height = img.naturalHeight;
+    ctx.drawImage(img, 0, 0);
+    if (!logo) return;
+    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
+    B.slots.forEach(function (s) {
+      var v = s.surface === "dark" ? logo.dark : logo.light;
+      var src = v.canvas, lw = src.width, lh = src.height;
+      var k = Math.min(s.w / lw, s.h / lh) * escala, dw = lw * k, dh = lh * k;
+      ctx.save();
+      ctx.translate(s.cx, s.cy);
+      if (s.rot) ctx.rotate(s.rot * Math.PI / 180);
+      if (s.m) ctx.transform(s.m[0], s.m[1], s.m[2], s.m[3], 0, 0);
+      ctx.globalAlpha = 0.97;
+      ctx.drawImage(src, -dw / 2, -dh / 2, dw, dh);
+      ctx.restore();
+    });
+  }
+  function desenharTudo() { Object.keys(BASES).forEach(desenhar); }
+
+  function atualizarSaidas() {
+    Object.keys(BASES).forEach(function (chave) {
+      var B = BASES[chave], cv = $(B.canvas), a = $(B.dl);
+      $(B.badge).classList.toggle("off", !!logo);
+      cv.setAttribute("aria-label", (chave === "card" ? "Card NFC" : "Key Card NFC") + (logo ? " com a sua logo" : " com a logo de exemplo da Tsu"));
+      a.hidden = !logo;
+      if (logo) {
+        cv.toBlob(function (b) {
+          if (!b) return;
+          if (a.dataset.url) URL.revokeObjectURL(a.dataset.url);
+          a.dataset.url = URL.createObjectURL(b); a.href = a.dataset.url;
+        }, "image/png");
+      }
+    });
+  }
+
+  var agenda = null;
+  function redesenhar() { desenharTudo(); clearTimeout(agenda); agenda = setTimeout(atualizarSaidas, 250); }
+
+  // ---------- upload ----------
+  var TIPOS = ["image/png", "image/jpeg", "image/webp", "image/svg+xml"];
+  function receber(file) {
+    if (!file) return;
+    if (TIPOS.indexOf(file.type) < 0) { aviso("Use uma imagem PNG, JPG, WEBP ou SVG.", true); return; }
+    if (file.size > 25 * 1024 * 1024) { aviso("Essa imagem é muito grande. Use um arquivo de até 25 MB.", true); return; }
+    aviso("Aplicando a sua logo…");
+    lerArquivo(file).then(function (im) {
+      var base = prepararLogo(im, file.type === "image/svg+xml");
+      var dk = variante(base, "dark"), lt = variante(base, "light");
+      logo = { base: base, dark: dk, light: lt };
+      // prévia no quadro de upload
+      var pv = drop.querySelector("img");
+      if (pv.dataset.url) URL.revokeObjectURL(pv.dataset.url);
+      base.toBlob(function (b) { pv.dataset.url = URL.createObjectURL(b); pv.src = pv.dataset.url; });
+      drop.classList.add("has-file"); ctl.classList.add("on"); $("aiCta").classList.add("on");
+      desenharTudo(); atualizarSaidas();
+      var nota = [];
+      if (dk.mudou) nota.push("no produto preto");
+      if (lt.mudou) nota.push("no produto branco");
+      aviso(nota.length ? "Pronto! Ajustamos o contraste da logo " + nota.join(" e ") + " para ela ficar legível." : "Pronto! Veja o resultado e baixe as imagens.");
+    }).catch(function (e) { aviso(e.message || "Não foi possível usar essa imagem.", true); });
+  }
+
+  input.addEventListener("change", function () { receber(input.files[0]); input.value = ""; });
+  ["dragenter", "dragover"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("over"); }); });
+  ["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
+  drop.addEventListener("drop", function (e) { receber(e.dataTransfer.files[0]); });
+
+  tam.addEventListener("input", function () { escala = tam.value / 100; $("aiTamV").textContent = tam.value + "%"; redesenhar(); });
+
+  $("aiZap").addEventListener("click", function (e) {
+    e.currentTarget.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Olá, Natanael! Fiz a simulação da minha logo no Card NFC e no Key Card NFC pelo site e quero um orçamento.");
+  });
+  $("aiZap").href = "https://wa.me/" + (typeof WHATSAPP !== "undefined" ? WHATSAPP : "5562992206897");
+
+  window.TsuLogoKit = { ler: lerArquivo, preparar: prepararLogo, variante: variante };
+
+  // ---------- carga inicial: mostra os exemplos da Tsu até a pessoa enviar a logo ----------
+  Object.keys(BASES).forEach(function (chave) {
+    var B = BASES[chave];
+    carregar(B.demo).then(function (i) { pronto[chave + "demo"] = i; if (!logo) desenhar(chave); });
+    carregar(B.plate).then(function (i) { pronto[chave + "plate"] = i; if (logo) { desenhar(chave); atualizarSaidas(); } });
+  });
+})();
+</script>
+<script>
+/* Movimento ao rolar: revelação dos blocos, barra de progresso, parallax e cabeçalho */
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var bar = document.getElementById("prog"), head = document.querySelector("header.top");
+  var heroImg = document.querySelector(".hero-logo img");
+  var facets = Array.prototype.slice.call(document.querySelectorAll(".facets"));
+  var busy = false;
+  function onScroll() {
+    if (busy) return; busy = true;
+    requestAnimationFrame(function () {
+      var y = window.pageYOffset || 0, h = root.scrollHeight - window.innerHeight;
+      if (bar) bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, y / h) : 0) + ")";
+      if (head) head.classList.toggle("scrolled", y > 40);
+      if (!reduce) {
+        if (heroImg && y < window.innerHeight * 1.2) {
+          heroImg.style.transform = "translate3d(0," + (y * 0.16) + "px,0) scale(" + (1 + y * 0.00012) + ")";
+          heroImg.style.opacity = Math.max(0, 1 - y / (window.innerHeight * 0.95));
+        }
+        facets.forEach(function (s) {
+          var r = s.parentNode.getBoundingClientRect();
+          if (r.bottom < 0 || r.top > window.innerHeight) return;
+          s.style.transform = "translate3d(0," + ((r.top + r.height / 2 - window.innerHeight / 2) * -0.07) + "px,0)";
+        });
+      }
+      busy = false;
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  if (reduce || !("IntersectionObserver" in window)) return;
+  var MAP = [
+    [".hero-copy", "left"], [".hero-shot", "right"], [".sec-head", "up"],
+    [".spot:first-of-type", "zoom"], [".spot-row .spot", "left"], [".spot-copy", "right"],
+    [".masonry figure", "up", 1],
+    [".vfeat .vcard", "left"], [".vfeat-copy", "right"], [".vhead", "up"], ["#vtrack .vcard", "up", 1],
+    [".nfcv-copy", "left"], [".nfcv-video", "right"], [".nfc-head", "up"],
+    [".card3d", "left"], [".c3-tool", "right"], [".card3d-info > div", "up", 1], [".tick li", "left", 1],
+    [".nfc-visual figure", "up", 1],
+    [".ai-side", "left"], [".ai-res figure", "up", 1], [".pdf-cta .wrap", "zoom"],
+    [".cat", "up", 1], [".contact .wrap > *", "up", 1], [".process li", "up", 1]
+  ];
+  var els = [];
+  MAP.forEach(function (m) {
+    Array.prototype.slice.call(document.querySelectorAll(m[0])).forEach(function (el, i) {
+      if (el.hasAttribute("data-r")) return;
+      el.setAttribute("data-r", m[1]);
+      if (m[2]) el.style.setProperty("--d", Math.min(i % 6, 5) * 90 + "ms");
+      els.push(el);
+    });
+  });
+  root.classList.add("motion");
+  var io = new IntersectionObserver(function (list) {
+    list.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  els.forEach(function (el) { io.observe(el); });
+  // segurança: se algo não disparar, nada fica escondido
+  setTimeout(function () { els.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top < window.innerHeight) el.classList.add("in"); }); }, 2500);
+})();
+</script>
+<script>
+/* Mais movimento: títulos por palavra, brilho magnético nos botões, ondas no clique, inclinação, rolagem das fotos, menu ativo */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+
+  // menu: destaca a seção atual
+  var links = Array.prototype.slice.call(document.querySelectorAll("header.top nav a[href^='#']:not(.btn)"));
+  if ("IntersectionObserver" in window && links.length) {
+    var map = {};
+    links.forEach(function (a) { var s = document.querySelector(a.getAttribute("href")); if (s) map[s.id] = a; });
+    // seções filhas contam para o item pai
+    var alias = { "nfc-video": "nfc", "nfc-como": "nfc", "tsu-ai-3d": "tsu-ai", "catalogo-pdf": "catalogo" };
+    var vis = {};
+    var so = new IntersectionObserver(function (list) {
+      list.forEach(function (e) { vis[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+      var best = null, bv = 0;
+      Object.keys(vis).forEach(function (id) { if (vis[id] > bv) { bv = vis[id]; best = alias[id] || id; } });
+      links.forEach(function (a) { a.classList.toggle("on", map[best] === a); });
+    }, { threshold: [0, .15, .3, .5, .8], rootMargin: "-12% 0px -40% 0px" });
+    Object.keys(map).concat(Object.keys(alias)).forEach(function (id) { var el = document.getElementById(id); if (el) so.observe(el); });
+  }
+
+  // ondas no clique dos botões
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest(".btn");
+    if (!b || reduce) return;
+    var r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2, s = document.createElement("span");
+    s.className = "rip"; s.style.width = s.style.height = d + "px";
+    s.style.left = (e.clientX - r.left - d / 2) + "px"; s.style.top = (e.clientY - r.top - d / 2) + "px";
+    b.appendChild(s); setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 700);
+  });
+
+  if (reduce) return;
+
+  // botões e flutuantes puxados pelo cursor
+  if (fine) {
+    Array.prototype.slice.call(document.querySelectorAll(".btn, .fabs a, .vnav")).forEach(function (el) {
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        el.style.transform = "translate(" + (dx * 0.22).toFixed(1) + "px," + (dy * 0.3).toFixed(1) + "px)";
+      });
+      el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+    });
+    // inclinação 3D leve nas fotos
+    Array.prototype.slice.call(document.querySelectorAll(".masonry figure > button, .nfc-visual figure img, .vfeat .vframe, .nfcv-video .vframe")).forEach(function (el) {
+      el.setAttribute("data-tilt", "");
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = "perspective(800px) rotateY(" + (x * 9).toFixed(2) + "deg) rotateX(" + (-y * 9).toFixed(2) + "deg) scale(1.02)";
+      });
+      el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+    });
+  }
+
+  // fotos de destaque deslizam dentro da moldura ao rolar
+  var pimgs = Array.prototype.slice.call(document.querySelectorAll(".spot img"));
+  var busy = false;
+  function par() {
+    if (busy) return; busy = true;
+    requestAnimationFrame(function () {
+      pimgs.forEach(function (im) {
+        var r = im.parentNode.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        var k = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        im.style.transform = "translate3d(0," + (k * -26).toFixed(1) + "px,0) scale(1.12)";
+      });
+      busy = false;
+    });
+  }
+  window.addEventListener("scroll", par, { passive: true }); par();
+
+  // títulos: palavra por palavra
+  function split(node, st) {
+    Array.prototype.slice.call(node.childNodes).forEach(function (c) {
+      if (c.nodeType === 3) {
+        var parts = c.nodeValue.split(/(\s+)/), frag = document.createDocumentFragment();
+        parts.forEach(function (w) {
+          if (!w) return;
+          if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(" ")); return; }
+          var o = document.createElement("span"), i = document.createElement("span");
+          o.className = "w"; i.textContent = w; i.style.setProperty("--i", st.n++); o.appendChild(i); frag.appendChild(o);
+        });
+        node.replaceChild(frag, c);
+      } else if (c.nodeType === 1 && c.tagName !== "BR") { split(c, st); }
+    });
+  }
+  if (document.documentElement.classList.contains("motion")) {
+    Array.prototype.slice.call(document.querySelectorAll(".sec-head h2, .sec-head h3, .nfc-head h2, .nfcv-copy h2, .hero-copy h2, .vfeat-copy h3, .spot-copy h3, .c3-tool h3")).forEach(function (h) {
+      if (!h.closest("[data-r]")) return;
+      h.setAttribute("aria-label", h.textContent.replace(/\s+/g, " ").trim());
+      split(h, { n: 0 });
+      Array.prototype.slice.call(h.querySelectorAll(".w")).forEach(function (w) { w.setAttribute("aria-hidden", "true"); });
+    });
+  }
+})();
+</script>
+<script>
+/* Profundidade: cards e imagens sobem e descem em velocidades diferentes ao rolar */
+(function () {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var items = [];
+  function add(sel, fn) {
+    Array.prototype.slice.call(document.querySelectorAll(sel)).forEach(function (el, i) { items.push({ el: el, sp: fn(el, i), last: 0 }); });
+  }
+  var SP = [46, -26, 70, -48, 30, -62];
+  var colX = [];
+  function colSpeed(el) {
+    var x = Math.round(el.offsetLeft / 20);
+    if (colX.indexOf(x) < 0) colX.push(x);
+    return [38, -30, 64, -46][colX.indexOf(x) % 4];
+  }
+  add(".masonry figure", function (el) { return colSpeed(el); });
+  add(".spot-row .spot", function () { return 22; });
+  add(".spot-copy", function () { return -30; });
+  add(".vfeat .vcard", function () { return 40; });
+  add(".vfeat-copy", function () { return -34; });
+  add(".nfcv-video", function () { return 52; });
+  add(".nfcv-copy", function () { return -28; });
+  add(".hero-shot", function () { return 44; });
+  add(".hero-copy", function () { return -26; });
+  add(".nfc-visual figure", function (el, i) { return [18, -14, 10][i % 3]; });
+  add(".card3d", function () { return 30; });
+  add(".c3-tool", function () { return -32; });
+  add(".ai-res figure", function (el, i) { return i ? -10 : 14; });
+  add(".process li", function (el, i) { return [-14, 18, -22][i % 3]; });
+  add(".cat", function (el, i) { return [14, -16, 20, -12][i % 4]; });
+  add(".sec-head > div", function () { return -18; });
+  add(".sec-head > .note", function () { return 22; });
+  add(".contact .wrap > *", function (el, i) { return i ? 30 : -24; });
+  var busy = false;
+  function tick() {
+    busy = false;
+    var vh = window.innerHeight, small = window.innerWidth < 900 ? 0.3 : 1;
+    items.forEach(function (it) {
+      var r = it.el.getBoundingClientRect(), base = r.top - it.last;
+      if (base > vh + 300 || base + r.height < -300) return;
+      var k = (base + r.height / 2 - vh / 2) / vh;
+      k = Math.max(-1.2, Math.min(1.2, k));
+      var v = k * it.sp * small;
+      it.last = v;
+      it.el.style.translate = "0 " + v.toFixed(1) + "px";
+    });
+  }
+  function onScroll() { if (!busy) { busy = true; requestAnimationFrame(tick); } }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", function () { colX = []; onScroll(); });
+  window.addEventListener("load", function () { colX = []; onScroll(); });
+  tick();
+})();
+</script>
+</body>
+</html>
